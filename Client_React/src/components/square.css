@@ -1,0 +1,11 @@
+.chess-piece{
+    background-size: 70px;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 75px;
+    width: 75px;
+}
+
+.chess-piece:hover{
+    cursor: grab;
+}

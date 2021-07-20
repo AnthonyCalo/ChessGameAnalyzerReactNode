@@ -1,0 +1,114 @@
+body{
+    width:95%;
+    background-color: #509152;
+    background-image: url("https://www.transparenttextures.com/patterns/absurdity.png");
+}
+
+.boardDiv{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.black-square{
+    background-color: #553c2a;
+    background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
+}
+.blackButton{
+    background-color: black;
+    color: white;
+}
+.belowButtons{
+    position: relative;
+    text-align: center;
+    margin-top: 1rem;
+}
+.chessBoard{
+    width: 600px;
+    height: 600px;
+    border: 5px solid;
+    border-style: outset;
+    border-color: #553C2A;
+    background: #553C2A;
+    display: grid;
+    grid-template-columns: repeat(8, 75px);
+    grid-template-rows: repeat(8, 75px);
+}
+.description{
+    float:right;
+    width: 20%;
+    position: relative;
+    margin-right: 4em;
+    margin-top: -35rem;
+    text-align: center;
+}
+
+.engine{
+    float: left;
+    position: relative;
+    right: 6.5em;
+    top: 14.6em;
+}
+.engine button{
+    
+    font-weight: bold;
+    height: 75px;
+    width: 100px;
+    background-color: #878787;
+    background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
+    color: black;
+}
+.engine button:hover{
+    cursor: pointer;
+    color: white;
+    background-color: #553c2a;
+    background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
+    
+}
+.gameHeader{
+    text-align: center;
+}
+.moveBtn{
+    padding: 1rem;
+    border: 2px solid;
+    border-style: outset;
+    border-color: #553C2A;
+    font-weight: bold;
+}
+.moveBtn:hover{
+    cursor: pointer;
+    background-color:burlywood;
+    background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
+
+}
+.moveIndicator{
+    position: relative;
+    top: 17.5em;
+    padding: 15px;
+    font-weight: bold;
+    height: 75px;
+    right: 1em;
+}
+.moveNumber{
+    visibility: hidden;
+    display: none;
+}
+.root{
+    width: 100%;
+}
+.square{
+    height: 75px;
+    width: 75px;
+    border: 1px solid;
+    display: flex;
+    text-align: left;
+}
+
+.whiteButton{
+    background-color: white;
+    color: black;
+}
+.white-square{
+    background-color: #878787;
+    background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
+}

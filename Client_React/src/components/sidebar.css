@@ -1,0 +1,67 @@
+.navbar-min{
+    background-color: #509152;
+    background-image: url("https://www.transparenttextures.com/patterns/absurdity.png");
+    position:absolute;
+    width: 4rem;
+    height: 100%;
+    right: 0em;
+    top:0;
+    float: right;
+    overflow-x: hidden;
+
+}
+.nav-toggle{
+    width: 4rem;
+    overflow-x: hidden;
+
+    height: 4rem;
+}
+.nav-toggleMax{
+    overflow-x: hidden;
+    width: 100%;
+    font-size: 25px;
+    z-index: -1;
+}
+.nav-toggle:hover{
+    cursor:pointer;
+
+}
+.navbar-minimized{
+    visibility:hidden;
+    overflow-x: hidden;
+
+}
+ul{
+    list-style-type: none;
+    text-align: center;
+    padding-left: 0;
+    margin-top: 0;
+}
+li{
+    height: 5rem;
+    text-decoration: none;
+    text-align: center;
+    padding-top: 2.5em;
+}
+li:hover{
+    background-color:rgb(219, 213, 213)
+}
+a{
+    text-align: center;
+    text-decoration: none;
+}
+.side-expand{
+    overflow-x: hidden;
+    right:0;
+    width: 25em;
+    display: block;
+    text-align: center;
+    background-color: antiquewhite;
+    z-index: 1;
+
+
+}
+.textVisible{
+    visibility:visible;
+}
+
