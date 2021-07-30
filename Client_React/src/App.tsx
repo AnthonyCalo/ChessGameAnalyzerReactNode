@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Sidebar from "./components/SideBar";
 import {movesList, theApplause, kasparovDB} from "./game/moves";
 import Description from "./components/Description";
+import HomePage from './components/HomePage';
 import {
   BrowserRouter as Router,
   Switch,
@@ -16,10 +17,14 @@ function App() {
     <Router>
      <Sidebar />
       <Switch >
+        <Route exact path='/'>
+          <Header title="Choose a game" />
+          <HomePage />
+        </Route>  
         <Route exact path="/fischer_reuben">
-          <Header title="Robert James Fischer vs Daniel Reuben" />
+          <Header title="Robert James Fischer vs Reuben Fine" />
+          <Description description="Bobby Fischer played the evans gambit and destroyed grandmaster Rueben Fine in 17 moves"/>
           <ChessBoardMovesAlready whitePlayer="/playerImgs/fischer.jpg" blackPlayer="/playerImgs/ReubenFine.jpg" movesList={movesList} gameover="Reuben Resigned in this position"/>
-          <Description description="Bobby Fischer played the evans gambit and destroyed grandmaster Daniel Rueben in 17 moves"/>
         </Route>
         <Route exact path="/fischer_spassky">
           <Header title="Robert James Fischer vs Boris Spassky" />

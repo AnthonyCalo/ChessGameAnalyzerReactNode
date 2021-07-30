@@ -180,10 +180,6 @@ function ChessBoardMovesAlready(props: any){
                 var attackedPiece = pieces.find(p => p.file===newFile && p.rank===newRank);
 
                 if(currentPiece){
-                    //console.log("Parent ID: " + parent?.id);
-                    //console.log("New Square: " + newSquare);
-                    //console.log("PIECE TYPE: " + pieceNames[currentPiece?.type]);
-
                     validMove = referee.isValidMove(parent?.id, newSquare, currentPiece?.type, currentPiece?.color, pieces);
                     // console.log(validMove);
                 }
@@ -191,7 +187,6 @@ function ChessBoardMovesAlready(props: any){
                 if(attackedPiece && validMove){
                     //console.log("here attacking")
                     const attackSquare = attackedPiece?.file + attackedPiece.rank;
-
                     setPieces((value)=>{        
                         const piecesMinusOne = value.reduce((results, piece)=>{
                             const pieceSquare=piece.file + piece.rank;
@@ -202,14 +197,14 @@ function ChessBoardMovesAlready(props: any){
                             return results
                         }, []as Piece[]);
                         return piecesMinusOne;
-                    })
-                    
-                    
+                    })  
                 }
                 setPieces((prev)=>{
                     const pieces=prev.map((selectPiece)=>{
                         const parent=activePiece?.parentElement
                         if(validMove && parent&& selectPiece.file===parent.id[0] && selectPiece.rank===parent.id[1]){
+                            //if the moves valid take the piece on current parent square
+                            //then give that piece a new rank/ file
                             selectPiece.rank=newRank;
                             selectPiece.file=newFile;
                             setTurn(turn===0?1:0);
@@ -292,14 +287,14 @@ function ChessBoardMovesAlready(props: any){
         )
         
     } 
-    function moveAnimation(oldSquare: string, newSquare: string){
-        let os = document.getElementById(oldSquare);
-        let ns = document.getElementById(newSquare);
-        var oldPiece = os?.getElementsByClassName("chess-piece") as HTMLCollectionOf<HTMLElement>;;
-        oldPiece[0].style.position="absolute";
-        console.log(oldPiece[0].style.position);
-        return true;
-    }
+    // function moveAnimation(oldSquare: string, newSquare: string){
+    //     let os = document.getElementById(oldSquare);
+    //     let ns = document.getElementById(newSquare);
+    //     var oldPiece = os?.getElementsByClassName("chess-piece") as HTMLCollectionOf<HTMLElement>;;
+    //      oldPiece[0].style.position="absolute";
+    //     console.log(oldPiece[0].style.position);
+    //     return true;
+    // }
     function movePieceGame(move: any){
         if(move[0]==="gameOver"){
             window.alert("Game Over, " + props.gameover);
@@ -322,7 +317,7 @@ function ChessBoardMovesAlready(props: any){
                 
                 var attackedPiece = pieces.find(p => p.file===move[1][0] && p.rank===move[1][1]);
 
-                moveAnimation(move[0], newSquare);
+                //moveAnimation(move[0], newSquare);
                 if(attackedPiece){
                     //console.log("here attacking")
                     var taken:TakenPiece={piece: attackedPiece, moveNumber: moveCount}
@@ -455,7 +450,7 @@ function ChessBoardMovesAlready(props: any){
     return(
         <>
         <div className="boardDiv">
-        <BlackPlayerImg blackPlayer={props.blackPlayer}/>
+        <BlackPlayerImg blackPlayer={props.blackPlayer} blackClass="black-player"/>
         <MoveButton color={buttonClass()} turn={moveTurn}/>
 
         <div className="chessBoard"
@@ -465,7 +460,7 @@ function ChessBoardMovesAlready(props: any){
             ref={boardRef}>
             {board}
         </div>
-        <WhitePlayerImg whitePlayer={props.whitePlayer} />
+        <WhitePlayerImg whitePlayer={props.whitePlayer} whiteClass="white-player"/>
         <EngineBut ass={moveCount} game={movesList}/>
 
         

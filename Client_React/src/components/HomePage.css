@@ -1,0 +1,47 @@
+
+.homeLink{
+    width: 75%;
+}
+.homeLI{
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: teal;
+    border-radius: 10%;
+    color: white;
+}
+.white-home{
+    position: relative;
+    float: left;
+
+}
+.black-home{
+    float: right;
+}
+.container{
+    display: grid;
+    grid-template-columns: 60%;
+    justify-content: center;
+}
+.gameListDiv:hover{
+    background-color: red;
+    cursor: pointer;
+}
+.gameListDiv a{
+    font-weight: bold;
+    font-size: 22px;
+    
+}
+.LINKGAME{
+    display: inline;
+    
+}
+.gameListDiv{
+    height: 108px;
+    text-align: center;
+    vertical-align: center;
+    border:antiquewhite;
+    border: solid 2px;
+    background-color: rgba(6, 189, 189, 0.623);
+    color: white;
+}

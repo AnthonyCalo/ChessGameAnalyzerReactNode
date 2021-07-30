@@ -7,15 +7,22 @@
     <link type="text/css" rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+         
   </head>
   <body>
     <div id="root"></div>
   </body>
   <script>
     document.addEventListener('keydown', function(event) {
+      event.preventDefault();
+
       if(event.code==="ArrowRight"){
+      event.preventDefault();
+
         document.getElementById("nextBtn").click();
       }else if(event.code==="ArrowLeft"){
+      event.preventDefault();
+
         document.getElementById("backBtn").click();
       }
     });

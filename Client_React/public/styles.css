@@ -1,5 +1,5 @@
 body{
-    width:95%;
+    width:97%;
     background-color: #509152;
     background-image: url("https://www.transparenttextures.com/patterns/absurdity.png");
 }
@@ -35,11 +35,11 @@ body{
     grid-template-rows: repeat(8, 75px);
 }
 .description{
-    float:right;
+    float:left;
     width: 20%;
-    position: relative;
-    margin-right: 4em;
-    margin-top: -35rem;
+    top: 0025em;
+    position: absolute;
+    
     text-align: center;
 }
 
@@ -47,7 +47,6 @@ body{
     float: left;
     position: relative;
     right: 6.5em;
-    top: 14.6em;
 }
 .engine button{
     

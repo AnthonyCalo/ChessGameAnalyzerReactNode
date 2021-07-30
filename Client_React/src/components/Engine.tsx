@@ -57,7 +57,7 @@ export default class EngineBut extends React.Component<any, any>{
                 var bmOldSquare = bestMove.slice(0,2);
                 var bmNewSquare = bestMove.slice(2,4);
                 var oldSquare= document.getElementById(bmOldSquare);
-                var newSquare= document.getElementById(bmNewSquare)
+                var newSquare= document.getElementById(bmNewSquare);
                 this.glowRed(oldSquare, newSquare);
             })
             .catch((err)=>{console.log("error: " + err);})
