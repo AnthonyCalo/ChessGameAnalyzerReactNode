@@ -21,9 +21,10 @@ export default class EngineBut extends React.Component<any, any>{
                 moveListForEngine.push("e1g1");
             }else if(moveList[i][1]=="BK"){
                 moveListForEngine.push("e8g8");
+            }else if (moveList[i][1]==="BQ"){
+                moveListForEngine.push("e8c8");
             }else{
                 moveListForEngine.push(moveList[i][0] + moveList[i][1]);
-                console.log(moveListForEngine);
             }
         }
 

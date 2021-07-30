@@ -237,6 +237,11 @@ function ChessBoardMovesAlready(props: any){
             newKingSquare="g8";
             oldRookSquare="h8";
             newRookSquare="f8";
+        }else if(newSquare="BQ"){
+            oldKingSquare="e8";
+            newKingSquare="c8";
+            oldRookSquare="a8";
+            newRookSquare="d8";
         }
         setPieces((prev)=>{
             const pieces=prev.map((selectPiece)=>{
@@ -269,6 +274,11 @@ function ChessBoardMovesAlready(props: any){
             newKingSquare="e8";
             oldRookSquare="f8";
             newRookSquare="h8";
+        }else if(newSquare==="BQ"){
+            oldKingSquare="c8";
+            newKingSquare="e8";
+            oldRookSquare="d8";
+            newRookSquare="a8";
         }
         setPieces((prev)=>{
             const pieces=prev.map((selectPiece)=>{

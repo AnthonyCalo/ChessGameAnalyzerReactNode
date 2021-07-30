@@ -3,7 +3,7 @@ import ChessBoardMovesAlready from "./components/ChessBoard2";
 import ChessBoard from "./components/ChessBoard";
 import Header from "./components/Header";
 import Sidebar from "./components/SideBar";
-import {movesList, theApplause, kasparovDB} from "./game/moves";
+import {movesList, theApplause, kasparovDB, carlsen_giri, carlsen_ivanchuk} from "./game/moves";
 import Description from "./components/Description";
 import HomePage from './components/HomePage';
 import {
@@ -37,6 +37,16 @@ function App() {
           <Header title="Garry Kasparov vs. IBM Deep Blue" />
           <ChessBoardMovesAlready whitePlayer="/playerImgs/deepblue.jpg" blackPlayer="/playerImgs/kasparov.jpg" movesList={kasparovDB} gameover="Garry Kasparov resigned in this position"/>
           <Description description="This game is signifcant because it is the first time a computer ever beat the human world championship. "/>
+        </Route>
+        <Route exact path="/carlsen_giri">
+          <Header title="Magnus Carlsen vs Anish Giri" />
+          <Description description="World champion Magnus Carlsen plays against world #4 at the 2019 Gashimov Memorial. Considered by many game of the year."/>
+          <ChessBoardMovesAlready whitePlayer="/playerImgs/carlsen.jpg" blackPlayer="/playerImgs/giri.jpg" movesList={carlsen_giri} gameover="Anish Giri lost on time. However this was a clearly winning endgame for Magnus"/>
+        </Route>
+        <Route exact path="/carlsen_ivanchuk">
+          <Header title="Magnus Carlsen vs Vassily Ivanchuk" />
+          <Description description="World champion Magnus Carlsen loses a game to Vassily Ivanchuk. Although Ivanchuk wasn't world champion he is considers one of the best players in the last several generations. He has beaten several world champions including Kasparov, Karpov and Carlsen."/>
+          <ChessBoardMovesAlready whitePlayer="/playerImgs/carlsen.jpg" blackPlayer="/playerImgs/ivanchuk.jpg" movesList={carlsen_ivanchuk} gameover="Magnus resigned in this position"/>
         </Route>
       </Switch>
     </Router>
