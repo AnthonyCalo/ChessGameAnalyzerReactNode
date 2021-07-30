@@ -18,8 +18,8 @@ app.get('/', function(req, res){
     console.log(engine.printBoard());
     engine.loadMoves("d2d4 b8c6");
     
-    var best = engine.search(15);
-    engine.printBoard();
+    var best = engine.search(8);
+    // engine.printBoard();
     res.send(best);
 
 })
@@ -37,7 +37,6 @@ app.post("/", async function(req, res){
         const bestMovie = {
             "bm": BM
         };
-        engine.printBoard();
         
         res.send(bestMovie);
         engine.setBoard(engine.START_FEN);
