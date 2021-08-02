@@ -73,6 +73,9 @@ startingPieces.push({image: "pieces/Bking.png", rank: '8', file: "e", type: piec
 
 
 function ChessBoardMovesAlready(props: any){
+    useEffect(()=>{
+        let gameBeginAudio = new Audio("/sound/start.mp3").play();
+    }, [])
     const referee = new gameRef();
     const [pieces, setPieces] = useState<Piece[]>(startingPieces); 
     const [turn, setTurn] = useState(0);
@@ -128,10 +131,7 @@ function ChessBoardMovesAlready(props: any){
                 element.style.position="absolute";
                 activePiece= element;
             }
-
-
         }
- 
     }
     function movePiece(event: any){
         const board = boardRef.current;
@@ -346,8 +346,7 @@ function ChessBoardMovesAlready(props: any){
                             return results
                         }, []as Piece[]);
                         return piecesMinusOne;
-                    })
-                    
+                    })                    
                 }
                 setPieces((prev)=>{
                     const pieces=prev.map((selectPiece)=>{
@@ -362,6 +361,7 @@ function ChessBoardMovesAlready(props: any){
                     return pieces;
                 }
                 )
+                let sound = new Audio('/sound/move_sound.mp3').play()
                 setMoveCount(prev=> prev+1);            
             }
         }//else close. else meaning it isn't a castle move

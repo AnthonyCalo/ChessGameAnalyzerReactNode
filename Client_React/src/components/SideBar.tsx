@@ -1,5 +1,6 @@
 import React from "react";
 import "./sidebar.css";
+import {Link} from 'react-router-dom';
 
 
 
@@ -36,11 +37,11 @@ export default class Sidebar extends React.Component {
             </button>
             <div className="navbar-minimized" id="sidebar-text">
             <ul>
-            <a href="/fischer_reuben"><li>Bobby Fischer vs Daniel Reuben</li></a>
-            <a href="/fischer_spassky"><li>Fischer vs Spassky</li></a>
-            <a href="/kasparov_blue"><li>Garry Kasparov vs. IBM deep blue</li></a>
-            <a href="/carlsen_giri"><li>Magnus Carlsen vs Anish Giri</li></a>
-            <a href="/carlsen_ivanchuk"><li>Magnus Carlsen vs Vassily Ivanchuk</li></a>
+            <Link to="/fischer_reuben"><li>Bobby Fischer vs Daniel Reuben</li></Link>
+            <Link to="/fischer_spassky"><li>Fischer vs Spassky</li></Link>
+            <Link to="/kasparov_blue"><li>Garry Kasparov vs. IBM deep blue</li></Link>
+            <Link to="/carlsen_giri"><li>Magnus Carlsen vs Anish Giri</li></Link>
+            <Link to="/carlsen_ivanchuk"><li>Magnus Carlsen vs Vassily Ivanchuk</li></Link>
             </ul>
             </div>
 
