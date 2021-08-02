@@ -1,6 +1,5 @@
 import React from "react"
 import ChessBoardMovesAlready from "./components/ChessBoard2";
-import ChessBoard from "./components/ChessBoard";
 import Header from "./components/Header";
 import Sidebar from "./components/SideBar";
 import {movesList, theApplause, kasparovDB, carlsen_giri, carlsen_ivanchuk} from "./game/moves";
@@ -50,20 +49,6 @@ function App() {
         </Route>
       </Switch>
     </Router>
-  //   <Router>
-  //     <Switch>
-  //   <Route path="/about">
-  //     <ChessBoard />
-  //   </Route>
-  //   <Route path="/">
-  //   <Header title="Robert James Fischer vs Daniel Reuben" />
-
-  //     <Sidebar />
-  //     <PlayerImg whitePlayer="/playerImgs/fischer.jpg" blackPlayer="/playerImgs/ReubenFine.jpg" />
-  //     <ChessBoardMovesAlready movesList={movesList}/>
-  //   </Route>
-  // </Switch>
-  //   </Router>
   );
 }
 

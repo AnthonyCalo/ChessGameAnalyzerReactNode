@@ -1,12 +1,7 @@
-import internal from "stream";
-import  {pieceType, Color}  from "../components/ChessBoard";
+import  {pieceType, Color}  from "../components/ChessBoard2";
 
-const pieceNames = ["PAWN", "KNIGHT","BISHOP","ROOK","QUEEN","KING"];
-const colors = ["White", "Black"];
 const boardFiles = ["a","b","c","d","e","f","g","h"];
 const boardRanks = ["1","2","3","4","5","6","7","8"];
-
-
 
 interface Piece{
     image: string
@@ -59,6 +54,23 @@ class gameRef {
     listOfSquareshavePiece(squares: string[], ){
 
     }
+    
+    kingInCheck(color: Color, currentBoard: Piece[]){
+        var inCheck = false;
+        var king = currentBoard.find(piece=>piece.color===color && piece.type===5);
+        //1st find location of king
+        if(king){
+            var kingSquare = king.file + king.rank
+        }
+        //check if any of the pieces on the opposite team can reach that square
+        currentBoard.forEach(piece=>{
+            if(piece.color!==color && this.isValidMove(piece.file+piece.rank, kingSquare, piece.type, piece.color, currentBoard)){
+                inCheck=true;
+                console.log(color + " is in check!");
+            }
+        })
+        return (inCheck);
+    }
 
     isValidMove(prevSquare: any, newSquare: any, type: pieceType, color: Color, currentBoard: Piece[]){
         var oldY = parseInt(prevSquare[1]);
@@ -81,7 +93,7 @@ class gameRef {
         //console.log(`${colors[color]} ${pieceNames[type]} moved from ${prevSquare} to ${newSquare}`);
         //function to whether white pawn can move. If it is on 1st rank it can move forward 2
         function whitePawnValidity(){
-            if((prevFile===newFile && newY-oldY===1 || (newY-oldY===2 && oldY===2))){
+            if(prevFile===newFile && (newY-oldY===1 || (newY-oldY===2 && oldY===2))){
                 return squareHasPiece(newFile, `${newY}`, currentBoard) ? false: true;
             }//take a piece movement
             else if(color===Color.WHITE && (Math.abs(oldX-newX)===1) && newY-oldY===1 && enemyOnSquare){
@@ -92,7 +104,7 @@ class gameRef {
             }
         }
         function blackPawnValidity(){
-            if((prevFile===newFile && oldY-newY===1 || (oldY-newY===2 && oldY===7))){
+            if(prevFile===newFile && (oldY-newY===1 || (oldY-newY===2 && oldY===7))){
                 return squareHasPiece(newFile, `${newY}`, currentBoard) ? false: true;
             }//take a piece movement
             else if((Math.abs(newX-oldX)===1) && oldY - newY===1 && enemyOnSquare){
@@ -143,7 +155,7 @@ class gameRef {
         function BishopValidity(){
             let movesValid=true;
             let inBetweenSquares: string[] = [];
-            if(color===Color.WHITE && (newY-oldY===newX-oldX) || (Math.abs(oldY-newY)===Math.abs(oldX-newX))){
+            if((newY-oldY===newX-oldX) || (Math.abs(oldY-newY)===Math.abs(oldX-newX))){
                 //creating array of ranks/ files inbetween old square and new square then combining into list of
                 //squares in between old position and new. THen will check those for a piece
                 let inBetweenRanks: string[]=[]

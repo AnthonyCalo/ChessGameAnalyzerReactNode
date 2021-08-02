@@ -1,12 +1,6 @@
-import { any } from "prop-types";
 import React from "react";
 
-export default class EngineBut extends React.Component<any, any>{
-    constructor(props: any){
-        super(props);
-        
-    };
-    
+export default class EngineBut extends React.Component<any, any>{   
     
     getMoveNum(){
         var moveNum = document.getElementById("moveNumber")?.innerHTML;
@@ -19,7 +13,7 @@ export default class EngineBut extends React.Component<any, any>{
         for(var i=0; i<moveNumber; i++){
             if(moveList[i][1]==="WK"){
                 moveListForEngine.push("e1g1");
-            }else if(moveList[i][1]=="BK"){
+            }else if(moveList[i][1]==="BK"){
                 moveListForEngine.push("e8g8");
             }else if (moveList[i][1]==="BQ"){
                 moveListForEngine.push("e8c8");

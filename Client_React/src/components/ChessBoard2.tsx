@@ -1,12 +1,8 @@
 import React, {useState, useEffect, useRef} from "react";
 import Square from "./square";
-import ReactDOM from "react-dom";
-import { kStringMaxLength } from "node:buffer";
 import gameRef from "../game/legalmove";
 import MoveButton from "./turnButton";
-import SideBar from "./SideBar";
 import {WhitePlayerImg, BlackPlayerImg} from "./WhitePlayerImg";
-import { isPropertySignature } from "typescript";
 import EngineBut from "./Engine";
 
 enum pieceType {
@@ -17,7 +13,6 @@ enum pieceType {
     QUEEN,
     KING    
 }
-const pieceNames = ["PAWN", "KNIGHT","BISHOP","ROOK","QUEEN","KING"];
 
 enum Color{
     WHITE,
@@ -36,11 +31,9 @@ interface TakenPiece{
     piece: any
     moveNumber: number
 }
-interface Move {
-    OS: string
-    NS: string
-}
 
+let gameBeginAudio = new Audio("/sound/start.mp3");
+let moveSound = new Audio('/sound/move_sound.mp3')
 
 const verticalAxis = ["8","7","6","5","4", "3","2","1"]
 const horizontalAxis = ["a","b","c","d","e","f","g","h"]
@@ -71,10 +64,10 @@ startingPieces.push({image: "pieces/Bqueen.png", rank: '8', file: "d", type: pie
 startingPieces.push({image: "pieces/Bking.png", rank: '8', file: "e", type: pieceType.KING, color: Color.BLACK});
 
 
-
+var oldGamePosition: Piece[] = [];
 function ChessBoardMovesAlready(props: any){
     useEffect(()=>{
-        let gameBeginAudio = new Audio("/sound/start.mp3").play();
+        gameBeginAudio.play();
     }, [])
     const referee = new gameRef();
     const [pieces, setPieces] = useState<Piece[]>(startingPieces); 
@@ -83,8 +76,10 @@ function ChessBoardMovesAlready(props: any){
     const [moveCount, setMoveCount] = useState(0);
     const [takenPieces, setTaken]=useState<TakenPiece[]>([])
     const movesList = props.movesList
+    //says whether or not user moved a piece
+    //important for setting board back to old position
+    const [playerMoves, setPM] = useState(false);
     
-    //const pieces: Piece[] = []
     function buttonClass(){
         if (turn===0){
             return("moveIndicator whiteButton");
@@ -93,29 +88,8 @@ function ChessBoardMovesAlready(props: any){
             return("moveIndicator blackButton")
         }
     }
-    
-    const moves = []
 
     const boardRef = useRef<HTMLDivElement>(null);
-    var PiecesRef = useRef<Piece[]>(pieces);
-
-
-    function kingInCheck(color: Color, currentBoard: Piece[]){
-        var inCheck = false;
-        var king = pieces.find(piece=>piece.color===color && piece.type===5);
-        //1st find location of king
-        if(king){
-            var kingSquare = king.file + king.rank
-        }
-        //check if any of the pieces on the opposite team can reach that square
-        pieces.forEach(piece=>{
-            if(piece.color!==color && referee.isValidMove(piece.file+piece.rank, kingSquare, piece.type, piece.color, pieces)){
-                inCheck=true;
-                console.log(color + " is in check!");
-            }
-        })
-        return (inCheck);
-    }
 
     let activePiece: HTMLElement | null = null;
 
@@ -164,6 +138,21 @@ function ChessBoardMovesAlready(props: any){
     }
     function placePiece(event: any){
             const chessboard=boardRef.current;
+            if(playerMoves===false){
+                setPM(true);
+                //pushing each piece into a new piece Array
+                //it stores the games position before the player moves the pieces. Required to put pieces back
+                //newArray=pieces won't work beauase it will keep the piece state when person moves the pieces
+                pieces.forEach((piece)=>{
+                    const oldPiece: Piece = {
+                        image: piece.image,
+                        rank: piece.rank,
+                        file:piece.file,
+                        type:piece.type,
+                        color:piece.color}
+                    oldGamePosition.push(oldPiece);
+                })
+            }
             var validMove = false; //needed to check if a move is okay
 
             
@@ -214,8 +203,8 @@ function ChessBoardMovesAlready(props: any){
                             }
                         return selectPiece;
                     })
-                    return pieces;
                     activePiece=null;
+                    return pieces;
                 }
                 )
                
@@ -237,7 +226,7 @@ function ChessBoardMovesAlready(props: any){
             newKingSquare="g8";
             oldRookSquare="h8";
             newRookSquare="f8";
-        }else if(newSquare="BQ"){
+        }else if(newSquare==="BQ"){
             oldKingSquare="e8";
             newKingSquare="c8";
             oldRookSquare="a8";
@@ -245,7 +234,6 @@ function ChessBoardMovesAlready(props: any){
         }
         setPieces((prev)=>{
             const pieces=prev.map((selectPiece)=>{
-                const parent=activePiece?.parentElement
                 if(selectPiece.file===oldKingSquare[0] && selectPiece.rank===oldKingSquare[1]){
                     selectPiece.rank=newKingSquare[1];
                     selectPiece.file=newKingSquare[0];
@@ -282,7 +270,7 @@ function ChessBoardMovesAlready(props: any){
         }
         setPieces((prev)=>{
             const pieces=prev.map((selectPiece)=>{
-                const parent=activePiece?.parentElement
+                //castle 1st if moves the king and second moves rook
                 if(selectPiece.file===oldKingSquare[0] && selectPiece.rank===oldKingSquare[1]){
                     selectPiece.rank=newKingSquare[1];
                     selectPiece.file=newKingSquare[0];
@@ -306,6 +294,15 @@ function ChessBoardMovesAlready(props: any){
     //     return true;
     // }
     function movePieceGame(move: any){
+        if(playerMoves){
+            console.log(oldGamePosition);
+            setPieces(oldGamePosition);
+            console.log("setting pieces to old position");
+            setPM(false);
+            oldGamePosition=[];
+        }
+        moveSound.play()
+
         if(move[0]==="gameOver"){
             window.alert("Game Over, " + props.gameover);
 
@@ -316,14 +313,8 @@ function ChessBoardMovesAlready(props: any){
         }else{
             //regular move not castle or game over
             const chessboard=boardRef.current;
-            var validMove = false; //needed to check if a move is okay
             
-            if(chessboard){
-
-                var newSquare = move[1]
-
-                var currentPiece=pieces.find(p=> (p.file===move[0][0] && p.rank===move[0][1]));
-                
+            if(chessboard){                
                 
                 var attackedPiece = pieces.find(p => p.file===move[1][0] && p.rank===move[1][1]);
 
@@ -350,7 +341,6 @@ function ChessBoardMovesAlready(props: any){
                 }
                 setPieces((prev)=>{
                     const pieces=prev.map((selectPiece)=>{
-                        const parent=activePiece?.parentElement
                         if(selectPiece.file===move[0][0] && selectPiece.rank===move[0][1]){
                             selectPiece.rank=move[1][1];
                             selectPiece.file=move[1][0];
@@ -361,7 +351,6 @@ function ChessBoardMovesAlready(props: any){
                     return pieces;
                 }
                 )
-                let sound = new Audio('/sound/move_sound.mp3').play()
                 setMoveCount(prev=> prev+1);            
             }
         }//else close. else meaning it isn't a castle move
@@ -376,7 +365,16 @@ function ChessBoardMovesAlready(props: any){
     function movePieceBack(){
         const move = movesList[moveCount-1];
         const chessboard=boardRef.current;
-        var validMove = false; 
+        moveSound.play();
+        //first checks if user moved pieces from game.
+        //same as move forward function
+        if(playerMoves){
+            console.log(oldGamePosition);
+            setPieces(oldGamePosition);
+            console.log("setting pieces to old position");
+            setPM(false);
+            oldGamePosition=[];
+        } 
         //set the move count back to do the opposite move
         //function is almost the same as forward function but new and old squares flipped
         if(moveCount===0 || moveCount < 0){
@@ -387,20 +385,10 @@ function ChessBoardMovesAlready(props: any){
             setTurn(turn===0?1:0);
 
         }else{
-       //needed to check if a move is okay
-            
+            //not reverting a castle or going back from 0. normal  back move    
             if(chessboard){
-
-                var newSquare = move[1];
-                var oldSquare=move.OS;
-
-                var currentPiece=pieces.find(p=> (p.file===move[1][0] && p.rank===move[1][1]));
-                
-
-
                 setPieces((prev)=>{
                     const pieces=prev.map((selectPiece)=>{
-                        const parent=activePiece?.parentElement
                         if(selectPiece.file===move[1][0] && selectPiece.rank===move[1][1]){
                             selectPiece.rank=move[0][1];
                             selectPiece.file=move[0][0];
