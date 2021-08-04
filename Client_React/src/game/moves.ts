@@ -49,6 +49,10 @@ var carlsen_ivanchuk = [['d2', 'd4'],['g8', 'f6'],['c1', 'g5'],['c7', 'c5'],['g5
 ['f3', 'h5'],['c8', 'f8'],['b4', 'b5'],['f5', 'f4'],['e3', 'f4'],['e5', 'f4'],['d2', 'e1'],['f4', 'g3'],['f2', 'g3'],
 ['f8', 'f1'],['e1', 'e2'],['b6', 'g1'],[ "gameOver",  "gameOver"]]
 
-export {movesList, theApplause, kasparovDB, carlsen_giri, carlsen_ivanchuk};
+var nakamura_bareev = [['g1','f3'],['d7','d5'],['d2','d4'],['c7','c6'],['c1','f4'],['d8','b6'],['b2','b3'],['g8','f6'],
+['e2','e3'],['f6','h5'],['f4','g5'],['h7','h6'],['g5','h4'],['b8','d7'],['f3','e5'],['d7','e5'],['d1','h5'],
+['e5','g4'],['h4','g3'],['g7','g6'],['h5','h4'],['f8','g7'],[ "gameOver",  "gameOver"]]
+
+export {movesList, theApplause, kasparovDB, carlsen_giri, carlsen_ivanchuk, nakamura_bareev};
 
 //var kasparovDB: move[] = [[]]

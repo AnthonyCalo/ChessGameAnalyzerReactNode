@@ -449,7 +449,7 @@ function ChessBoardMovesAlready(props: any){
         <>
         <div className="boardDiv">
         <BlackPlayerImg blackPlayer={props.blackPlayer} blackClass="black-player"/>
-        <MoveButton color={buttonClass()} turn={moveTurn}/>
+        {/* <MoveButton color={buttonClass()} turn={moveTurn}/> */}
 
         <div className="chessBoard"
             onMouseMove={event => movePiece(event)}

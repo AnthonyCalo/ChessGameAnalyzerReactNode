@@ -7,12 +7,12 @@
 .white-player{
     position: relative;
     margin-top: 500px;
-    margin-left: 1%;
+    margin-left: .5%;
 } 
 .black-player{
     position: relative;
-    left: 7em;
     margin-right: 0;
+    margin-right: .5%;
 
 }
 

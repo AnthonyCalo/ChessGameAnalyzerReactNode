@@ -21,6 +21,7 @@ body{
 .belowButtons{
     position: relative;
     text-align: center;
+    margin-right:6em;
     margin-top: 1rem;
 }
 .chessBoard{

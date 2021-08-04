@@ -2,7 +2,7 @@ import React from "react"
 import ChessBoardMovesAlready from "./components/ChessBoard2";
 import Header from "./components/Header";
 import Sidebar from "./components/SideBar";
-import {movesList, theApplause, kasparovDB, carlsen_giri, carlsen_ivanchuk} from "./game/moves";
+import {movesList, theApplause, kasparovDB, carlsen_giri, carlsen_ivanchuk, nakamura_bareev} from "./game/moves";
 import Description from "./components/Description";
 import HomePage from './components/HomePage';
 import {
@@ -17,7 +17,7 @@ function App() {
      <Sidebar />
       <Switch >
         <Route exact path='/'>
-          <Header title="Choose a game" />
+          <Header title="Games List" />
           <HomePage />
         </Route>  
         <Route exact path="/fischer_reuben">
@@ -46,6 +46,11 @@ function App() {
           <Header title="Magnus Carlsen vs Vassily Ivanchuk" />
           <Description description="World champion Magnus Carlsen loses a game to Vassily Ivanchuk. Although Ivanchuk wasn't world champion he is considers one of the best players in the last several generations. He has beaten several world champions including Kasparov, Karpov and Carlsen."/>
           <ChessBoardMovesAlready whitePlayer="/playerImgs/carlsen.jpg" blackPlayer="/playerImgs/ivanchuk.jpg" movesList={carlsen_ivanchuk} gameover="Magnus resigned in this position"/>
+        </Route>
+        <Route exact path="/nakamura_bareev">
+          <Header title="Evgeny Bareev vs Hikaru Nakamura" />
+          <Description description="Hikaru Nakamura defeats grandmaster  Evgeny Bareev in 11 moves! Can you find Bareevs Blunder?"/>
+          <ChessBoardMovesAlready whitePlayer="/playerImgs/bareev.jpg" blackPlayer="/playerImgs/hikaru.jpg" movesList={nakamura_bareev} gameover="Bareev resigned in this position"/>
         </Route>
       </Switch>
     </Router>
