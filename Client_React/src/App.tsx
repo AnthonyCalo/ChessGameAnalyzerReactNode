@@ -2,7 +2,7 @@ import React, {useState} from "react"
 import ChessBoardMovesAlready from "./components/ChessBoard2";
 import Header from "./components/Header";
 import Sidebar from "./components/SideBar";
-import {movesList, theApplause, kasparovDB, carlsen_giri, carlsen_ivanchuk, nakamura_bareev} from "./game/moves";
+import {movesList, theApplause, kasparovDB, carlsen_giri, carlsen_ivanchuk, nakamura_bareev, morphy_anderson} from "./game/moves";
 import Description from "./components/Description";
 import HomePage from './components/HomePage';
 import MovesDisplay from "./components/MovesDisplay";
@@ -130,6 +130,24 @@ function App() {
             </div>
             <div className="rightSide">
               <MovesDisplay move={moveCount} movesList={nakamura_bareev}/>
+            </div>
+          </div>
+        </Route>
+        <Route exact path="/anderssen_morphy">
+          <Header title="Adolf Anderssen vs. Paul Morphy" />
+          <div className="container">
+            <div className="leftSide">
+              <div className="blankSpace"></div>
+              <WhitePlayerImg whitePlayer="/playerImgs/morphy.jpg" />
+              <BlackPlayerImg blackPlayer="/playerImgs/anderssen.jpg" />
+              <Description description="Beatiful game played in 1858. After winning the 1st American Chess congress(1857), Morphy went to europe to challenge the best grandmasters.
+              he defeats German grandmaster Anderssen. "/>
+            </div>
+            <div className="middleBoard">
+              <ChessBoardMovesAlready setMove={setMove} movesList={morphy_anderson} gameover="Anderson resigned in this position"/>
+            </div>
+            <div className="rightSide">
+              <MovesDisplay move={moveCount} movesList={morphy_anderson}/>
             </div>
           </div>
         </Route>

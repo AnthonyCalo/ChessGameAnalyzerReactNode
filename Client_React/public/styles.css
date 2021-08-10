@@ -130,3 +130,22 @@ body{
     background-color: #878787;
     background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
 }
+
+@media (max-width:1650px){
+    .leftSide{
+        margin-right: 10%;
+    }
+}
+@media (max-width:1365px){
+   .leftSide{
+       margin-left: 0;
+   }
+    .description{
+        visibility: hidden;
+    }
+}
+@media (max-width:1320px){
+    .leftSide{
+        visibility: hidden;
+    }
+}

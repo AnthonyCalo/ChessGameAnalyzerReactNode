@@ -27,15 +27,19 @@ const MovesDisplay = (props: any)=>{
             return null;
             
         });
+        var Counter=0;
+
         let displayMove = moves.map((move: any, index: number)=>{
             if(move){
-                return(
+                Counter+=1;
+            return(
                     <div className="move">
-                        <div className="number">{index+1}. </div>
+                        <div className="number">{Counter}. </div>
                         {move}
                     </div>)
                 }
             }
+            
         )
         return (displayMove);   
      }

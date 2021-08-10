@@ -76,7 +76,7 @@
     margin-top: 0;
     width: 300;
     flex-direction: column;
-    color: black;
+    color: white;
     background-color:rgb(23, 71, 35);
     background-image: url("https://www.transparenttextures.com/patterns/absurdity.png");
 }
@@ -131,10 +131,11 @@ background:rgb(48, 148, 248);
         margin-left: 2em;
     }
     .btns{
-        height: 100px;
+        height: 60px;
     }
     .MD_btn{
-        height: 100px;
+        height: 60px;
+        font-size: .6em;
     }
 }
 @media (max-width: 1403px){
