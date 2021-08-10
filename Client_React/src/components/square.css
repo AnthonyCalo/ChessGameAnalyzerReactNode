@@ -1,9 +1,9 @@
 .chess-piece{
-    background-size: 70px;
+    background-size: 94px;
     background-position: center;
     background-repeat: no-repeat;
-    height: 75px;
-    width: 75px;
+    height: 94px;
+    width: 94px;
 }
 
 .chess-piece:hover{

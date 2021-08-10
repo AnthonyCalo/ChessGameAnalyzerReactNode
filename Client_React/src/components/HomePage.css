@@ -18,7 +18,7 @@
 .black-home{
     float: right;
 }
-.container{
+.container_homepage{
     display: grid;
     grid-template-columns: 60%;
     justify-content: center;

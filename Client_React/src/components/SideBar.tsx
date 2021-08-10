@@ -1,6 +1,5 @@
 import React from "react";
 import "./sidebar.css";
-import {Link} from 'react-router-dom';
 
 
 
@@ -16,7 +15,6 @@ export default class Sidebar extends React.Component {
             navtoggle?.classList.remove("nav-toggleMax");
             sidebar?.classList.remove('side-expand');
             sidebartext?.classList.remove('textVisible');
-
         }
         else{
             console.log("Here should be adding class");
@@ -37,12 +35,12 @@ export default class Sidebar extends React.Component {
             </button>
             <div className="navbar-minimized" id="sidebar-text">
             <ul>
-            <Link to="/fischer_reuben"><li>Bobby Fischer vs Daniel Reuben</li></Link>
-            <Link to="/fischer_spassky"><li>Fischer vs Spassky</li></Link>
-            <Link to="/kasparov_blue"><li>Garry Kasparov vs. IBM deep blue</li></Link>
-            <Link to="/carlsen_giri"><li>Magnus Carlsen vs Anish Giri</li></Link>
-            <Link to="/carlsen_ivanchuk"><li>Magnus Carlsen vs Vassily Ivanchuk</li></Link>
-            <Link to="/nakamura_bareev"><li>Evgeny Bareev vs Hikaru Nakamura</li></Link>
+            <a href="/fischer_reuben"><li>Bobby Fischer vs Daniel Reuben</li></a >
+            <a href="/fischer_spassky"><li>Fischer vs Spassky</li></a >
+            <a href="/kasparov_blue"><li>Garry Kasparov vs. IBM deep blue</li></a >
+            <a href="/carlsen_giri"><li>Magnus Carlsen vs Anish Giri</li></a >
+            <a href="/carlsen_ivanchuk"><li>Magnus Carlsen vs Vassily Ivanchuk</li></a >
+            <a href="/nakamura_bareev"><li>Evgeny Bareev vs Hikaru Nakamura</li></a >
             </ul>
             </div>
 

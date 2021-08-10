@@ -14,7 +14,7 @@ class HomePage extends React.Component {
     render(){
         if(this.state.loaded){
             return(
-            <div className="container">
+            <div className="container_homepage">
                     <Link to="fischer_reuben"><div className='gameListDiv'>
                         <WhitePlayerImg whitePlayer="/playerImgs/fischer.jpg" whiteClass='white-home'/>
                         <div className="LINKGAME">

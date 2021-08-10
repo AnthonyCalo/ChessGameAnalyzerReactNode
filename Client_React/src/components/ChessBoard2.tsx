@@ -66,24 +66,28 @@ startingPieces.push({image: "pieces/Bking.png", rank: '8', file: "e", type: piec
 
 var oldGamePosition: Piece[] = [];
 function ChessBoardMovesAlready(props: any){
-    useEffect(()=>{
-        gameBeginAudio.play();
-    }, [])
+    
     const referee = new gameRef();
     const [pieces, setPieces] = useState<Piece[]>(startingPieces); 
     const [turn, setTurn] = useState(0);
-    var moveTurn = turn ? "Blacks Move": "Whites Move";
     const [moveCount, setMoveCount] = useState(0);
     const [takenPieces, setTaken]=useState<TakenPiece[]>([])
     const movesList = props.movesList
     //says whether or not user moved a piece
     //important for setting board back to old position
     const [playerMoves, setPM] = useState(false);
+    function setMove(moveNum: any){
+        setMoveCount(moveNum);
+        props.setMove(moveNum);
+    }
+
+    useEffect(()=>{
+        gameBeginAudio.play();
+    }, [])
     
     function buttonClass(){
         if (turn===0){
             return("moveIndicator whiteButton");
-
         }else{
             return("moveIndicator blackButton")
         }
@@ -98,8 +102,8 @@ function ChessBoardMovesAlready(props: any){
         //const currSquare = element.parentNode.id;
         const chessboard = boardRef.current;
         if (chessboard){
-            let currentRank = verticalAxis[Math.floor((event.clientY- chessboard?.offsetTop) / 75)];
-            let currentFile = horizontalAxis[Math.floor((event.clientX - chessboard?.offsetLeft) / 75)];
+            let currentRank = verticalAxis[Math.floor((event.clientY- chessboard?.offsetTop) / 94)];
+            let currentFile = horizontalAxis[Math.floor((event.clientX - chessboard?.offsetLeft) / 94)];
             let currentPiece = pieces.find(p => p.file===currentFile && p.rank===currentRank);
             if(element.classList.contains("chess-piece") && currentPiece?.color===turn){
                 element.style.position="absolute";
@@ -115,8 +119,8 @@ function ChessBoardMovesAlready(props: any){
             const boardSideRight = boardSideLeft + board.clientWidth-70;
             const boardBottom =boardTop + board.clientHeight - 70;
             activePiece.style.position="absolute";
-            const  x = event.clientX -37.5;
-            const  y = event.clientY-37.5;
+            const  x = event.clientX -47;
+            const  y = event.clientY-47;
             //series of if else if keeps piece movement within boards area
             //1st if else if is horizontally and second is vertically
             if( x<boardSideLeft){    
@@ -157,8 +161,8 @@ function ChessBoardMovesAlready(props: any){
 
             
             if(chessboard){
-                var newRank = verticalAxis[Math.floor((event.clientY- chessboard?.offsetTop) / 75)];  //this gets the new square based on where I release the mouse
-                var newFile = horizontalAxis[Math.floor((event.clientX - chessboard?.offsetLeft) / 75)];
+                var newRank = verticalAxis[Math.floor((event.clientY- chessboard?.offsetTop) / 94)];  //this gets the new square based on where I release the mouse
+                var newFile = horizontalAxis[Math.floor((event.clientX - chessboard?.offsetLeft) / 94)];
                 var newSquare = newFile + newRank;
 
 
@@ -185,6 +189,8 @@ function ChessBoardMovesAlready(props: any){
                             }
                             return results
                         }, []as Piece[]);
+                        moveSound.play();
+
                         return piecesMinusOne;
                     })  
                 }
@@ -201,6 +207,7 @@ function ChessBoardMovesAlready(props: any){
                             activePiece?.style.removeProperty("top");
                             activePiece?.style.removeProperty("left");
                             }
+                        moveSound.play();
                         return selectPiece;
                     })
                     activePiece=null;
@@ -308,7 +315,7 @@ function ChessBoardMovesAlready(props: any){
 
         }else if(move[0]==="castle"){
             castle(move[1]);
-            setMoveCount((prev)=>prev+1);
+            setMove(moveCount+1);
             setTurn(turn===0?1:0);
         }else{
             //regular move not castle or game over
@@ -351,14 +358,14 @@ function ChessBoardMovesAlready(props: any){
                     return pieces;
                 }
                 )
-                setMoveCount(prev=> prev+1);            
+                setMove(moveCount+1);            
             }
         }//else close. else meaning it isn't a castle move
     
     }//movePieceGame close
     //called with backbutton moves back a game move
     function setbackMove(){
-        setMoveCount(prev=>prev-1);
+        setMove(moveCount-1);
         setTimeout(function(){
         },200);
     }
@@ -379,7 +386,7 @@ function ChessBoardMovesAlready(props: any){
         //function is almost the same as forward function but new and old squares flipped
         if(moveCount===0 || moveCount < 0){
             window.alert("Cant move back from move 0!");
-            setMoveCount(0);
+            setMove(0);
         }else if(move[0]==="castle"){
             castleBack(move[1]);
             setTurn(turn===0?1:0);
@@ -448,7 +455,6 @@ function ChessBoardMovesAlready(props: any){
     return(
         <>
         <div className="boardDiv">
-        <BlackPlayerImg blackPlayer={props.blackPlayer} blackClass="black-player"/>
         {/* <MoveButton color={buttonClass()} turn={moveTurn}/> */}
 
         <div className="chessBoard"
@@ -457,11 +463,7 @@ function ChessBoardMovesAlready(props: any){
             onMouseUp={event => placePiece(event)}
             ref={boardRef}>
             {board}
-        </div>
-        <WhitePlayerImg whitePlayer={props.whitePlayer} whiteClass="white-player"/>
-        <EngineBut ass={moveCount} game={movesList}/>
-
-        
+        </div>      
         </div>
 
         {/* KChad to use arrow function because onclick won't work with type void */}
