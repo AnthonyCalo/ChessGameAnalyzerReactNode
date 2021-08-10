@@ -31,9 +31,11 @@ function App() {
           <Header title="Robert James Fischer vs Reuben Fine" />
           <div className="container">
             <div className="leftSide">
-              <Description description="Bobby Fischer played the evans gambit and destroyed grandmaster Rueben Fine in 17 moves"/>
+              <div className="blankSpace"></div>
               <WhitePlayerImg whitePlayer="/playerImgs/fischer.jpg" />
               <BlackPlayerImg blackPlayer="/playerImgs/ReubenFine.jpg" />
+              <Description description="Bobby Fischer played the evans gambit and destroyed grandmaster Rueben Fine in 17 moves"/>
+
             </div>
             <div className="middleBoard">
               <ChessBoardMovesAlready  setMove={setMove} movesList={movesList} gameover="Reuben Resigned in this position"/>
@@ -48,11 +50,12 @@ function App() {
           <Header title="Robert James Fischer vs Boris Spassky" />
           <div className="container">
             <div className="leftSide">
-            <Description description="This is game 6 of the 1972 world championships. One of the most famous games ever played. Also known as 'The Applause' game. Boris Spassky stoop up and clapped at Fischers the
-            beauty of Fischers performance when resigning.
-            It is an extra level of intensity because match occured  during the height of the cold war between USSR and The United States.  "/>
+            <div className="blankSpace"></div>
               <WhitePlayerImg whitePlayer="/playerImgs/fischer2.jpg" />
               <BlackPlayerImg blackPlayer="/playerImgs/Spassky.png" />
+              <Description description="This is game 6 of the 1972 world championships. One of the most famous games ever played. Also known as 'The Applause' game. Boris Spassky stoop up and clapped at Fischers the
+            beauty of Fischers performance when resigning.
+            It is an extra level of intensity because match occured  during the height of the cold war between USSR and The United States.  "/>
             </div>
             <div className="middleBoard">
               <ChessBoardMovesAlready  setMove={setMove} movesList={theApplause} gameover="Spassky Resigned in this position"/>
@@ -66,9 +69,10 @@ function App() {
           <Header title="Garry Kasparov vs. IBM Deep Blue" />
           <div className="container">
             <div className="leftSide">
-              <Description description="This game is signifcant because it is the first time a computer ever beat the human world championship. "/>
+            <div className="blankSpace"></div>
               <WhitePlayerImg whitePlayer="/playerImgs/kasparov.jpg" />
               <BlackPlayerImg blackPlayer="/playerImgs/deepblue.jpg" />
+              <Description description="This game is signifcant because it is the first time a computer ever beat the human world championship. "/>
             </div>
             <div className="middleBoard">
               <ChessBoardMovesAlready movesList={kasparovDB} setMove={setMove} gameover="Garry Kasparov resigned in this position"/>
@@ -82,9 +86,10 @@ function App() {
           <Header title="Magnus Carlsen vs Anish Giri" />
           <div className="container">
             <div className="leftSide">
-              <Description description="World champion Magnus Carlsen plays against world #4 at the 2019 Gashimov Memorial. Considered by many game of the year."/>
+              <div className="blankSpace"></div>
               <WhitePlayerImg whitePlayer="/playerImgs/carlsen.jpg" />
               <BlackPlayerImg blackPlayer="/playerImgs/giri.jpg" />
+              <Description description="World champion Magnus Carlsen plays against world #4 at the 2019 Gashimov Memorial. Considered by many game of the year."/>
             </div>
             <div className="middleBoard">
             <ChessBoardMovesAlready setMove={setMove} movesList={carlsen_giri} gameover="Anish Giri lost on time. However this was a clearly winning endgame for Magnus"/>
@@ -98,9 +103,10 @@ function App() {
           <Header title="Magnus Carlsen vs Vassily Ivanchuk" />
           <div className="container">
             <div className="leftSide">
-              <Description description="World champion Magnus Carlsen loses a game to Vassily Ivanchuk. Although Ivanchuk wasn't world champion he is considers one of the best players in the last several generations. He has beaten several world champions including Kasparov, Karpov and Carlsen."/>
+              <div className="blankSpace"></div>
               <WhitePlayerImg whitePlayer="/playerImgs/carlsen2.jpg" />
               <BlackPlayerImg blackPlayer="/playerImgs/ivanchuk.jpg" />
+              <Description description="World champion Magnus Carlsen loses a game to Vassily Ivanchuk. Although Ivanchuk wasn't world champion he is considers one of the best players in the last several generations. He has beaten several world champions including Kasparov, Karpov and Carlsen."/>
             </div>
             <div className="middleBoard">
             <ChessBoardMovesAlready setMove={setMove} movesList={carlsen_ivanchuk} gameover="Magnus resigned in this position"/>
@@ -114,9 +120,10 @@ function App() {
           <Header title="Evgeny Bareev vs Hikaru Nakamura" />
           <div className="container">
             <div className="leftSide">
-              <Description description="Hikaru Nakamura defeats grandmaster  Evgeny Bareev in 11 moves! Can you find Bareevs Blunder?"/>
+              <div className="blankSpace"></div>
               <WhitePlayerImg whitePlayer="/playerImgs/hikaru.jpg" />
               <BlackPlayerImg blackPlayer="/playerImgs/bareev.jpg" />
+              <Description description="Hikaru Nakamura defeats grandmaster  Evgeny Bareev in 11 moves! Can you find Bareevs Blunder?"/>
             </div>
             <div className="middleBoard">
               <ChessBoardMovesAlready setMove={setMove} movesList={nakamura_bareev} gameover="Bareev resigned in this position"/>

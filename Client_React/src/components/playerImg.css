@@ -1,20 +1,11 @@
 .player{
-    height: 100px;
-    width: 100px;
+    height: 150px;
+    width: 150px;
     border: 4px solid;
+    margin-left: 5rem;
 }
 
-.white-player{
-    position: relative;
-    margin-top: 500px;
-    margin-left: .5%;
-} 
-.black-player{
-    position: relative;
-    margin-right: 0;
-    margin-right: .5%;
 
-}
 
 
 

@@ -1,29 +1,14 @@
-.movesDisplay{
-    height: 752px;
-    width: 300px;
-    border: 4px solid;
-    border-color: black;
-    opacity: .8;
-    float: right;
-    top: 5em;
-    overflow: auto;
+.black_move{
+    order: 3;
+    margin-right: 2em;
+    text-align: center;
+    width: 20%;
 }
-
-::-webkit-scrollbar {
-    width: 10px;
-    }
-    
-::-webkit-scrollbar-track {
-box-shadow: inset 0 0 5px rgb(144, 144, 144); 
-border-radius: 10px;
-}
-::-webkit-scrollbar-thumb {
-background:rgb(24, 75, 2); 
-border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-background:rgb(48, 148, 248); 
+.buttons{
+    position: sticky;
+    height: 100px;
+    bottom: 0;
+    margin-top: auto;
 }
 .current_move{
     background-color: antiquewhite;
@@ -31,63 +16,24 @@ background:rgb(48, 148, 248);
     color: blue;
     text-align: center;
 }
-.btns{
-    position: static;
-    bottom: 0;
-}
-
-.moves_display{
-    display: flex;
-    margin-top: 0;
-    height: 1100px;
-    width: 300;
-    flex-direction: column;
-    color: black;
-    background-color:rgb(86, 173, 108);
-    background-image: url("https://www.transparenttextures.com/patterns/absurdity.png");
-
-}
-.moves_display .move{
-    opacity: 1;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 8px;
-    font-weight: bold;
-    font-family: 'Roboto', sans-serif;
-}
-.MD_head{
-    text-align: center;
-    top: 0;
+.engine{
+    width: 100%;
     position: sticky;
-    height: 30px;
-    margin: 0;
-    padding: 10px;
+}
+
+.engine button{
+    width: 100%;
+    height: 50px;
     background-color: antiquewhite;
     background-image: url("https://www.transparenttextures.com/patterns/absurdity.png");
+    font-weight: bold;
+    height: 50px;
 }
-.number{
-    order: 1;
-    margin-left: 2em;
+.engine button:hover{
+    cursor: pointer;
+    background-color:rgb(219, 213, 213);
+    color: blue;
 }
-.white_move{
-    order: 2;
-    width: 20%;
-    text-align: center;
-    
-}
-.btns{
-    position: sticky;
-    bottom: 0; 
-    height: 50px;  
-    width: 100%; 
-}
-.black_move{
-    order: 3;
-    margin-right: 2em;
-    text-align: center;
-    width: 20%;
-}
-
 .MD_btn{
     background-color: antiquewhite;
     background-image: url("https://www.transparenttextures.com/patterns/absurdity.png");
@@ -102,6 +48,80 @@ background:rgb(48, 148, 248);
     background-color:rgb(219, 213, 213);
     color: blue;
 }
+.MD_head{
+    text-align: center;
+    top: 0;
+    position: sticky;
+    height: 30px;
+    margin: 0;
+    padding: 10px;
+    background-color: antiquewhite;
+    background-image: url("https://www.transparenttextures.com/patterns/absurdity.png");
+}
+.movesDisplay{
+    height: 752px;
+    width: 300px;
+    border: 4px solid;
+    border-color: black;
+    opacity: .8;
+    float: right;
+    top: 5em;
+    overflow: auto;
+    display: grid;
+    background-color:rgb(23, 71, 35);
+    background-image: url("https://www.transparenttextures.com/patterns/absurdity.png");
+}
+.moves_display{
+    display: flex;
+    margin-top: 0;
+    width: 300;
+    flex-direction: column;
+    color: black;
+    background-color:rgb(23, 71, 35);
+    background-image: url("https://www.transparenttextures.com/patterns/absurdity.png");
+}
+.moves_display .move{
+    opacity: 1;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    font-weight: bold;
+    font-size: 1.3em;
+    font-family: 'Roboto', sans-serif;
+}
+.number{
+    color:rgba(255, 255, 255, 0.746);
+    order: 1;
+    margin-left: 2em;
+}
+.white_move{
+    order: 2;
+    width: 20%;
+    text-align: center;
+    
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    }
+    
+::-webkit-scrollbar-track {
+box-shadow: inset 0 0 5px rgb(144, 144, 144); 
+border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+background:rgb(7, 8, 7); 
+border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+background:rgb(48, 148, 248); 
+}
+
+
+
+
+
 @media (max-width: 1720px){
     .MD_head{
         height: 40px;

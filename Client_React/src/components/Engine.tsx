@@ -3,12 +3,8 @@ import React from "react";
 export default class EngineBut extends React.Component<any, any>{   
     
     getMoveNum(){
-        var moveNum = document.getElementById("moveNumber")?.innerHTML;
-        var moveNumber=0
+        var moveNumber=this.props.ass;
         var moveList = this.props.game;
-        if(moveNum!==undefined){
-            moveNumber= parseInt(moveNum);
-        }
         var moveListForEngine = [];
         for(var i=0; i<moveNumber; i++){
             if(moveList[i][1]==="WK"){
@@ -60,7 +56,6 @@ export default class EngineBut extends React.Component<any, any>{
     render(){
         return(
             <div className="engine"> 
-                <p className="moveNumber" id="moveNumber">{this.props.ass}</p>
                 <button type="submit" onClick={()=>{this.getMoveNum()}}>What would the engine play?</button>
             </div>)    
     }

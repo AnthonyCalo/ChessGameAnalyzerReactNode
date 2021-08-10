@@ -2,18 +2,38 @@ import React from "react";
 import "./playerImg.css";
 
 function WhitePlayerImg(props: any){
-    return(
-        <>
-            <img src={props.whitePlayer}  alt='whitePlayer' className={`${props.whiteClass} player`}></img>
-        </>
-    )
+    if(props.whiteClass!=="white-home"){
+        return(
+            <>
+                <img src={props.whitePlayer}  alt='whitePlayer' className={`${props.whiteClass} player`}></img>
+            </>
+        )
+    }
+    else{
+        return(
+            <>
+                <img src={props.whitePlayer}  alt='whitePlayer' className={`${props.whiteClass} homePlayer`}></img>
+            </>
+        )
+    }
+    
 }
 function BlackPlayerImg(props: any){
-    return(
-        <>
-            <img src={props.blackPlayer} alt='blackPlayer' className={`${props.blackClass} player`}></img>
-        </>
-    )
+    if(props.blackClass!=="black-home"){
+        return(
+            <>
+                <img src={props.blackPlayer} alt='blackPlayer' className={`${props.blackClass} player`}></img>
+            </>
+        )
+    }
+    else{
+        return(
+            <>
+                <img src={props.blackPlayer} alt='blackPlayer' className={`${props.blackClass} homePlayer`}></img>
+            </>
+        )
+    }
+    
 }
 
 

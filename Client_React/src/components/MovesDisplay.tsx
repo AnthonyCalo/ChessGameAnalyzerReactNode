@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import EngineBut from './Engine';
 import './Movesdis.css';
 
 
@@ -7,6 +8,10 @@ const MovesDisplay = (props: any)=>{
     const nextMove=()=>{
         var nextMve = document.getElementById("nextBtn");
         nextMve?.click();
+    }
+    const backMove=()=>{
+        var backMve = document.getElementById("backBtn");
+        backMve?.click();
     }
     const renderMoves=()=>{
         const moves= props.movesList.map((move: any, index: number)=>{
@@ -38,16 +43,18 @@ const MovesDisplay = (props: any)=>{
     return(
         <div className="movesDisplay">
             <h2 className="MD_head fixed sticky">Moves List</h2>
-            <div className="MD_background">
             <div className="moves_display">
                 {renderMoves()}
             </div>
+            <div className="buttons">
+                <EngineBut game={props.movesList} ass={props.move} />
+                <div className="btns">
+                    <button className="back_btn MD_btn" onClick={()=>backMove()}>Move back</button>
+                    <button className="reset__button MD_btn" onClick={()=>window.location.reload()}>ResetBoard</button>
+                    <button className="next_btn MD_btn" onClick={()=>nextMove()}>Next move</button>
+                </div>
             </div>
-            <div className="btns">
-                <button className="back_btn MD_btn">Move back</button>
-                <button className="reset__button MD_btn" onClick={()=>window.location.reload()}>ResetBoard</button>
-                <button className="next_btn MD_btn" onClick={()=>nextMove()}>Next move</button>
-            </div>
+            
         </div>
         )
 }

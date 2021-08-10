@@ -1,11 +1,17 @@
 import React from "react";
+import Accordion from "./Accordion";
 
 
 
 export default function Description(props:any){
+    const items =[
+        {
+        title: "See Game Description",
+        content: props.description
+    }
+]
     return(
         <div className="description">
-            <h3>Game Description</h3>
-            <p>{props.description}</p>
+            <Accordion items={items} />
             </div>)
 }
