@@ -10,15 +10,16 @@ a{
     font-weight: bold;
     font-size: 1.4em;
     border: 1px solid;
+    border-color: black;
     background-color:rgb(23, 71, 35);
     padding: 5px;
+    color: white;
     background-image: url("https://www.transparenttextures.com/patterns/absurdity.png");
 }
 .accordion_title:hover{
     cursor: pointer;
 }
 .accordion_content{
-    font-weight: bold;
     font-size: 1.2em;
     padding: 10px;
     border: 1px solid;
@@ -27,7 +28,7 @@ a{
     background-image: url("https://www.transparenttextures.com/patterns/absurdity.png");
 }
 .arrow {
-    border: solid black;
+    border: solid white;
     border-width: 0 3px 3px 0;
     display: inline-block;
     padding: 3px;
@@ -45,8 +46,10 @@ body{
 }
 
 .black-square{
-    background-color: #553c2a;
-    background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
+    
+/* background-image: url("/wallpaper/darkMarble3.jpg"); */
+background-color: #3d2827;
+background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
 }
 .blackButton{
     background-color: black;
@@ -122,18 +125,23 @@ body{
     transform: rotate(-135deg);
     -webkit-transform: rotate(-135deg);
   }
+
 .whiteButton{
     background-color: white;
     color: black;
 }
 .white-square{
-    background-color: #878787;
-    background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
+    background-image: url("/wallpaper/marble.jpg");
+
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 
 @media (max-width:1650px){
     .leftSide{
         margin-right: 10%;
+    }
+    .middleBoard{
+        width: 752px;
     }
 }
 @media (max-width:1365px){

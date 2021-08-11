@@ -4,8 +4,8 @@ import "./playerImg.css";
 function WhitePlayerImg(props: any){
     if(props.whiteClass!=="white-home"){
         return(
-            <>
-                <img src={props.whitePlayer}  alt='whitePlayer' className={`${props.whiteClass} player`}></img>
+            <>  
+                <img src={props.whitePlayer}  alt={props.alt} className={`${props.whiteClass} player`}></img>
             </>
         )
     }
@@ -22,7 +22,7 @@ function BlackPlayerImg(props: any){
     if(props.blackClass!=="black-home"){
         return(
             <>
-                <img src={props.blackPlayer} alt='blackPlayer' className={`${props.blackClass} player`}></img>
+                <img src={props.blackPlayer} alt={props.alt} className={`${props.blackClass} player`}></img>
             </>
         )
     }
