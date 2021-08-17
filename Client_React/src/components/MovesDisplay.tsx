@@ -51,7 +51,7 @@ const MovesDisplay = (props: any)=>{
                 {renderMoves()}
             </div>
             <div className="buttons">
-                <EngineBut game={props.movesList} ass={props.move} />
+                <EngineBut userMoveEngine={props.userMoveEngine} game={props.movesList} moveNum={props.move} />
                 <div className="btns">
                     <button className="back_btn MD_btn" onClick={()=>backMove()}>Move back</button>
                     <button className="reset__button MD_btn" onClick={()=>window.location.reload()}>ResetBoard</button>

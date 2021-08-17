@@ -1,9 +1,6 @@
 import React, {useState, useEffect, useRef} from "react";
 import Square from "./square";
 import gameRef from "../game/legalmove";
-import MoveButton from "./turnButton";
-import {WhitePlayerImg, BlackPlayerImg} from "./WhitePlayerImg";
-import EngineBut from "./Engine";
 
 enum pieceType {
     PAWN,
@@ -70,29 +67,30 @@ function ChessBoardMovesAlready(props: any){
     const referee = new gameRef();
     const [pieces, setPieces] = useState<Piece[]>(startingPieces); 
     const [turn, setTurn] = useState(0);
+    const [userMovesEngine, setUME] = useState<String[]>([])
     const [moveCount, setMoveCount] = useState(0);
-    const [takenPieces, setTaken]=useState<TakenPiece[]>([])
+    const [takenPieces, setTaken]=useState<TakenPiece[]>([]);
+
     const movesList = props.movesList
     //says whether or not user moved a piece
     //important for setting board back to old position
     const [playerMoves, setPM] = useState(false);
+    //for after player moves set back turn
+
     function setMove(moveNum: any){
         setMoveCount(moveNum);
         props.setMove(moveNum);
     }
-
+    //passuser moves to the engine
+    useEffect(()=>{
+        props.passToEngine(userMovesEngine);
+        
+    }, );
     useEffect(()=>{
         gameBeginAudio.play();
+        props.passToEngine([]);
     }, [])
     
-    function buttonClass(){
-        if (turn===0){
-            return("moveIndicator whiteButton");
-        }else{
-            return("moveIndicator blackButton")
-        }
-    }
-
     const boardRef = useRef<HTMLDivElement>(null);
 
     let activePiece: HTMLElement | null = null;
@@ -156,6 +154,7 @@ function ChessBoardMovesAlready(props: any){
                         color:piece.color}
                     oldGamePosition.push(oldPiece);
                 })
+                
             }
             var validMove = false; //needed to check if a move is okay
 
@@ -198,6 +197,8 @@ function ChessBoardMovesAlready(props: any){
                     const pieces=prev.map((selectPiece)=>{
                         const parent=activePiece?.parentElement
                         if(validMove && parent&& selectPiece.file===parent.id[0] && selectPiece.rank===parent.id[1]){
+                            var moveEngine = parent.id + newSquare;
+                            setUME([...userMovesEngine, moveEngine]);
                             //if the moves valid take the piece on current parent square
                             //then give that piece a new rank/ file
                             selectPiece.rank=newRank;
@@ -302,11 +303,11 @@ function ChessBoardMovesAlready(props: any){
     // }
     function movePieceGame(move: any){
         if(playerMoves){
-            console.log(oldGamePosition);
             setPieces(oldGamePosition);
             console.log("setting pieces to old position");
             setPM(false);
             oldGamePosition=[];
+            setUME([]);
         }
         moveSound.play()
 
@@ -376,9 +377,8 @@ function ChessBoardMovesAlready(props: any){
         //first checks if user moved pieces from game.
         //same as move forward function
         if(playerMoves){
-            console.log(oldGamePosition);
             setPieces(oldGamePosition);
-            console.log("setting pieces to old position");
+            setUME([]);
             setPM(false);
             oldGamePosition=[];
         } 
@@ -421,7 +421,7 @@ function ChessBoardMovesAlready(props: any){
 
         }
     
-    let board=[];
+    let board: any=[];
     let counter=0;
     //nested loop to create board w/ black/white squares
     //j is x and i is Y

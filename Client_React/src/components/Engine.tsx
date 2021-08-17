@@ -1,11 +1,12 @@
 import React from "react";
+import "./engine.css"
 
-export default class EngineBut extends React.Component<any, any>{   
-    
-    getMoveNum(){
-        var moveNumber=this.props.ass;
-        var moveList = this.props.game;
-        var moveListForEngine = [];
+const EngineBut = (props)=>{
+
+    const getMoveNum=()=>{
+        var moveNumber=props.moveNum;
+        var moveList: any = props.game;
+        var moveListForEngine:any = [];
         for(var i=0; i<moveNumber; i++){
             if(moveList[i][1]==="WK"){
                 moveListForEngine.push("e1g1");
@@ -17,47 +18,66 @@ export default class EngineBut extends React.Component<any, any>{
                 moveListForEngine.push(moveList[i][0] + moveList[i][1]);
             }
         }
-
-        console.log("move list engine: " + moveListForEngine.join(' '));
-        this.getBest(moveListForEngine.join(' '));
+        if(props.userMoveEngine.length>0){
+            console.log("ENGINE CALLED USER MOVES")
+            console.log(moveListForEngine.join(' '), props.userMoveEngine.join(' '));
+            let GB_param:any = [];
+            if(moveListForEngine.length>0){
+                GB_param = (moveListForEngine.join(' ') + " " + props.userMoveEngine.join(' '));
+            }else{
+                GB_param = (props.userMoveEngine.join(' '));
+            }
+            getBest(GB_param);
+        }else{
+            console.log("ENGINE CALLED NO USER MOVES")
+            console.log("move list engine: " + moveListForEngine.join(' '));
+            getBest(moveListForEngine.join(' '));            
+        }
+        
     }
-    glowRed(element1: any, element2: any){
-        var oldbackground1 = element1.style.backgroundColor;
-        var oldbackground2 = element2.style.backgroundColor;
-
-        element1.style.backgroundColor = 'red';
-        element2.style.backgroundColor = 'red';
+    const glowRed=(element1: any, element2: any)=>{        
+        element1.classList.add("glowRed");
+        element2.classList.add("glowRed");
+        //fixed bug. Since white background image can't just add background color red to it
         setTimeout(function(){
-            element1.style.backgroundColor=oldbackground1;
-            element2.style.backgroundColor=oldbackground2;
+            element1.classList.remove("glowRed");
+            element2.classList.remove("glowRed");
        },1000);
     }
-    getBest(movesListicle: string){
-        var bestMove ="" 
-        fetch("http://localhost:3001/", {
-                method: "POST",
-                headers: {'Content-Type': 'application/json',
-                            'Accept': 'application/json'},
-                body: JSON.stringify({ "moves": movesListicle})
-            })
-            .then((response)=>response.json())
-            .then(body=> {
-                //console.log("Best Move: " + body.bm);
-                bestMove=body.bm;
-                console.log("best move in then: " + bestMove);
-                var bmOldSquare = bestMove.slice(0,2);
-                var bmNewSquare = bestMove.slice(2,4);
-                var oldSquare= document.getElementById(bmOldSquare);
-                var newSquare= document.getElementById(bmNewSquare);
-                this.glowRed(oldSquare, newSquare);
-            })
-            .catch((err)=>{console.log("error: " + err);})
+    const getBest=(movesListicle: string)=>{
+        if(movesListicle){
+            var bestMove ="" 
+            fetch("http://localhost:3001/", {
+                    method: "POST",
+                    headers: {'Content-Type': 'application/json',
+                                'Accept': 'application/json'},
+                    body: JSON.stringify({ "moves": movesListicle})
+                })
+                .then((response)=>response.json())
+                .then(body=> {
+                    bestMove=body.bm;
+                    console.log("best move in then: " + bestMove);
+                    var bmOldSquare = bestMove.slice(0,2);
+                    var bmNewSquare = bestMove.slice(2,4);
+                    var oldSquare= document.getElementById(bmOldSquare);
+                    var newSquare= document.getElementById(bmNewSquare);
+                    glowRed(oldSquare, newSquare);
+                })
+                .catch((err)=>{console.log("error: " + err);})
+            }else{
+                var oldSquare= document.getElementById("e2");
+                var newSquare= document.getElementById("e4");
+                glowRed(oldSquare, newSquare);
+            }
         }
-    render(){
-        return(
-            <div className="engine"> 
-                <button type="submit" onClick={()=>{this.getMoveNum()}}>What would the engine play?</button>
-            </div>)    
-    }
+
+    return(
+    <div className="engine"> 
+        <button type="submit" onClick={()=>{getMoveNum()}}>What would the engine play?</button>
+    </div>)    
 
 }
+
+export default EngineBut;
+    
+    

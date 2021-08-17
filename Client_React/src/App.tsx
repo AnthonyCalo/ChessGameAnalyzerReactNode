@@ -14,11 +14,21 @@ import {
 import { WhitePlayerImg, BlackPlayerImg } from "./components/WhitePlayerImg";
 
 function App() {
-  const [moveCount, setMoveCount] = useState(0)
+
+  //both use state hooks are being used to pass info from the chessboard component to the engine
+  const [moveCount, setMoveCount] = useState(0);
+  const [userMoveEngine, setUserMoveEngine] = useState<String[]>([]);
   const setMove = (moveNum: any) =>{
     setMoveCount(moveNum)
   }
-
+  const passToEngine=(moves)=>{
+    if(moves.length === 0 && userMoveEngine.length === 0){
+      return;
+    }else{
+      setUserMoveEngine(moves);
+    }
+    
+  }
   return (
     <Router>
      <Sidebar />
@@ -37,10 +47,10 @@ function App() {
               <Description description="Bobby Fischer played the evans gambit and destroyed grandmaster Rueben Fine in 17 moves"/>
             </div>
             <div className="middleBoard">
-              <ChessBoardMovesAlready  setMove={setMove} movesList={movesList} gameover="Reuben Resigned in this position"/>
+              <ChessBoardMovesAlready  passToEngine={passToEngine} setMove={setMove} movesList={movesList} gameover="Reuben Resigned in this position"/>
             </div>
             <div className="rightSide">
-              <MovesDisplay move={moveCount} movesList={movesList}/>
+              <MovesDisplay userMoveEngine={userMoveEngine} move={moveCount} movesList={movesList}/>
             </div>
           </div>
          
@@ -52,15 +62,15 @@ function App() {
             <div className="blankSpace"></div>
               <BlackPlayerImg alt="Spassky" blackPlayer="/playerImgs/Spassky.png" />
               <WhitePlayerImg alt="Fischer" whitePlayer="/playerImgs/fischer2.jpg" />
-              <Description description="This is game 6 of the 1972 world championships. One of the most famous games ever played. Also known as 'The Applause' game. Boris Spassky stoop up and clapped at Fischers the
-            beauty of Fischers performance when resigning.
-            It is an extra level of intensity because match occured  during the height of the cold war between USSR and The United States.  "/>
+              <Description description="This is game 6 of the 1972 world championships. One of the most famous games ever played. Also known as 'The Applause' game. Boris Spassky stoop up and clapped at the
+                beauty of Fischers performance when resigning.
+                It is an extra level of intensity because match occured  during the height of the cold war between USSR and The United States.  "/>
             </div>
             <div className="middleBoard">
-              <ChessBoardMovesAlready  setMove={setMove} movesList={theApplause} gameover="Spassky Resigned in this position"/>
+              <ChessBoardMovesAlready  passToEngine={passToEngine} setMove={setMove} movesList={theApplause} gameover="Spassky Resigned in this position"/>
             </div>
             <div className="rightSide">
-              <MovesDisplay move={moveCount} movesList={theApplause}/>
+              <MovesDisplay userMoveEngine={userMoveEngine} move={moveCount} movesList={theApplause}/>
             </div>
           </div>
         </Route>
@@ -69,16 +79,16 @@ function App() {
           <div className="container">
             <div className="leftSide">
             <div className="blankSpace"></div>
-              <BlackPlayerImg alt="deepBlue" blackPlayer="/playerImgs/deepblue.jpg" />
-              <WhitePlayerImg alt="Kasparov" whitePlayer="/playerImgs/kasparov.jpg" />
+              <BlackPlayerImg alt="Kasparov" blackPlayer="/playerImgs/kasparov.jpg" />
+              <WhitePlayerImg  alt="deepBlue" whitePlayer="/playerImgs/deepblue.jpg"/>
               <Description description="This game took place in 1997. It is signifcant moment in chess and technology. 
                 This is the first time a computer ever beat the human world champion. "/>
             </div>
             <div className="middleBoard">
-              <ChessBoardMovesAlready movesList={kasparovDB} setMove={setMove} gameover="Garry Kasparov resigned in this position"/>
+              <ChessBoardMovesAlready passToEngine={passToEngine} movesList={kasparovDB} setMove={setMove} gameover="Garry Kasparov resigned in this position"/>
             </div>
             <div className="rightSide">
-              <MovesDisplay move={moveCount} movesList={kasparovDB}/>
+              <MovesDisplay userMoveEngine={userMoveEngine} move={moveCount} movesList={kasparovDB}/>
             </div>
           </div>
         </Route>
@@ -92,10 +102,10 @@ function App() {
               <Description description="World champion Magnus Carlsen plays against world #4 at the 2019 Gashimov Memorial. Considered by many game of the year."/>
             </div>
             <div className="middleBoard">
-            <ChessBoardMovesAlready setMove={setMove} movesList={carlsen_giri} gameover="Anish Giri lost on time. However this was a clearly winning endgame for Magnus"/>
+            <ChessBoardMovesAlready passToEngine={passToEngine} setMove={setMove} movesList={carlsen_giri} gameover="Anish Giri lost on time. However this was a clearly winning endgame for Magnus"/>
             </div>
             <div className="rightSide">
-              <MovesDisplay move={moveCount} movesList={carlsen_giri}/>
+              <MovesDisplay userMoveEngine={userMoveEngine}  move={moveCount} movesList={carlsen_giri}/>
             </div>
           </div>
         </Route>
@@ -110,10 +120,10 @@ function App() {
               He has beaten several world champions including Kasparov, Karpov and Carlsen."/>
             </div>
             <div className="middleBoard">
-            <ChessBoardMovesAlready setMove={setMove} movesList={carlsen_ivanchuk} gameover="Magnus resigned in this position"/>
+            <ChessBoardMovesAlready passToEngine={passToEngine} setMove={setMove} movesList={carlsen_ivanchuk} gameover="Magnus resigned in this position"/>
             </div>
             <div className="rightSide">
-              <MovesDisplay move={moveCount} movesList={carlsen_ivanchuk}/>
+              <MovesDisplay userMoveEngine={userMoveEngine} move={moveCount} movesList={carlsen_ivanchuk}/>
             </div>
           </div>
         </Route>
@@ -122,15 +132,15 @@ function App() {
           <div className="container">
             <div className="leftSide">
               <div className="blankSpace"></div>
-              <BlackPlayerImg alt="Bareev" blackPlayer="/playerImgs/bareev.jpg" />
-              <WhitePlayerImg alt="Nakamura" whitePlayer="/playerImgs/hikaru.jpg" />
+              <BlackPlayerImg  alt="Nakamura" blackPlayer="/playerImgs/hikaru.jpg"/>
+              <WhitePlayerImg alt="Bareev" whitePlayer="/playerImgs/bareev.jpg" />
               <Description description="Hikaru Nakamura defeats grandmaster  Evgeny Bareev in 11 moves! Can you find Bareevs Blunder?"/>
             </div>
             <div className="middleBoard">
-              <ChessBoardMovesAlready setMove={setMove} movesList={nakamura_bareev} gameover="Bareev resigned in this position"/>
+              <ChessBoardMovesAlready passToEngine={passToEngine} setMove={setMove} movesList={nakamura_bareev} gameover="Bareev resigned in this position"/>
             </div>
             <div className="rightSide">
-              <MovesDisplay move={moveCount} movesList={nakamura_bareev}/>
+              <MovesDisplay userMoveEngine={userMoveEngine} move={moveCount} movesList={nakamura_bareev}/>
             </div>
           </div>
         </Route>
@@ -147,10 +157,10 @@ function App() {
                 />
             </div>
             <div className="middleBoard">
-              <ChessBoardMovesAlready setMove={setMove} movesList={morphy_anderson} gameover="Anderson resigned in this position"/>
+              <ChessBoardMovesAlready passToEngine={passToEngine} setMove={setMove} movesList={morphy_anderson} gameover="Anderssen resigned in this position"/>
             </div>
             <div className="rightSide">
-              <MovesDisplay move={moveCount} movesList={morphy_anderson}/>
+              <MovesDisplay userMoveEngine={userMoveEngine} move={moveCount} movesList={morphy_anderson}/>
             </div>
           </div>
         </Route>
