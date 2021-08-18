@@ -59,6 +59,17 @@ const morphy_anderson = [["e2", "e4"],["c7", "c5"],["d2", "d4"],["c5", "d4"],["g
 ["d5", "f6"], ["d6", "d5"],["c4", "d5"],["f7", "g6"],["f3", "h5"],["g6", "f6"],["f2", "e3"],["d4", "c2"],["e1", "e2"],
 ["gameOver", "gameOver"]];
 
-export {movesList, theApplause, kasparovDB, carlsen_giri, carlsen_ivanchuk, nakamura_bareev, morphy_anderson};
+const kasparov_kramnik = [["d2", "d4"], ["g8", "f6"],["c2", "c4"],["g7", "g6"],["b1", "c3"], ["f8", "g7"],["e2", "e4"],
+["d7", "d6"], ["g1", "f3"],["castle", "BK"], ["f1", "e2"],["e7", "e5"],["d4", "d5"],["a7", "a5"],["c1", "g5"],["h7", "h6"],
+["g5", "h4"],["b8", "a6"],["castle", "WK"],["c8", "d7"],["f3", "d2"],["a6", "c5"],["b2", "b3"],["f6", "e4"],["h4", "d8"],
+["e4", "c3"],["d1", "e1"],["f8", "d8"],["a1", "c1"],["c3", "a2"],["c1", "a1"],["a2", "b4"],["e2", "d1"],["e5", "e4"],
+["a1", "b1"],["d8", "e8"],["e1", "e3"],["f7", "f5"],["h2", "h4"],["e8", "f8"],["g2", "g3"],["a8", "e8"],["g1", "g2"]
+,["b4", "d3"],["f1", "g1"],["f5", "f4"],["g3 ", "f4"],["f8", "f4"],["h4", "h5"],["g6", "g5"],["g1", "f1"],["f4", "h4"]
+,["f1", "h1"],["h4", "f4"],["h1", "f1"],["e8", "f8"],["f2", "f3"],["f4", "h4"],["f3", "e4"],["d3", "f4"],["g2", "g1"]
+,["c5", "d3"],["e4", "e5"],["d3", "e5"],["b1", "c1"],["h4", "h3"],["d2", "f3"],["g5", "g4"],["f3", "e5"],["h3", "e3"]
+,["e5", "d7"],["f4", "h3"],["g1", "g2"],["f8", "f1"],["g2", "f1"],["g4", "g3"],["f1", "g2"],["h3", "f4"]
+,["gameOver", "gaemOver"]]
+
+export {movesList, theApplause, kasparovDB, carlsen_giri, carlsen_ivanchuk, nakamura_bareev, morphy_anderson, kasparov_kramnik};
 
 //var kasparovDB: move[] = [[]]

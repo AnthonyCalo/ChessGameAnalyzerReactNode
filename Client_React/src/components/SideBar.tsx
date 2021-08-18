@@ -35,13 +35,14 @@ export default class Sidebar extends React.Component {
             </button>
             <div className="navbar-minimized" id="sidebar-text">
             <ul>
-            <a href="/fischer_reuben"><li>Bobby Fischer vs Daniel Reuben</li></a >
-            <a href="/fischer_spassky"><li>Fischer vs Spassky</li></a >
-            <a href="/kasparov_blue"><li>Garry Kasparov vs. IBM deep blue</li></a >
-            <a href="/carlsen_giri"><li>Magnus Carlsen vs Anish Giri</li></a >
-            <a href="/carlsen_ivanchuk"><li>Magnus Carlsen vs Vassily Ivanchuk</li></a >
-            <a href="/nakamura_bareev"><li>Evgeny Bareev vs Hikaru Nakamura</li></a >
-            <a href="/anderssen_morphy"><li>Adolf Anderssen vs Paul Morphy</li></a >
+            <a href="/fischer_reuben"><li>Bobby Fischer vs Daniel Reuben</li></a>
+            <a href="/fischer_spassky"><li>Fischer vs Spassky</li></a>
+            <a href="/kasparov_blue"><li>Garry Kasparov vs. IBM deep blue</li></a>
+            <a href="/carlsen_giri"><li>Magnus Carlsen vs Anish Giri</li></a>
+            <a href="/carlsen_ivanchuk"><li>Magnus Carlsen vs Vassily Ivanchuk</li></a>
+            <a href="/nakamura_bareev"><li>Evgeny Bareev vs Hikaru Nakamura</li></a>
+            <a href="/anderssen_morphy"><li>Adolf Anderssen vs Paul Morphy</li></a>
+            <a href="/kramnik_kasparov"><li>Vladimir Kramnik vs Garry Kasparov</li></a>
             </ul>
             </div>
 

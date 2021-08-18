@@ -2,7 +2,7 @@ import React, {useState} from "react"
 import ChessBoardMovesAlready from "./components/ChessBoard2";
 import Header from "./components/Header";
 import Sidebar from "./components/SideBar";
-import {movesList, theApplause, kasparovDB, carlsen_giri, carlsen_ivanchuk, nakamura_bareev, morphy_anderson} from "./game/moves";
+import {movesList, theApplause, kasparovDB, carlsen_giri, carlsen_ivanchuk, nakamura_bareev, morphy_anderson, kasparov_kramnik} from "./game/moves";
 import Description from "./components/Description";
 import HomePage from './components/HomePage';
 import MovesDisplay from "./components/MovesDisplay";
@@ -161,6 +161,25 @@ function App() {
             </div>
             <div className="rightSide">
               <MovesDisplay userMoveEngine={userMoveEngine} move={moveCount} movesList={morphy_anderson}/>
+            </div>
+          </div>
+        </Route>
+        <Route exact path="/kramnik_kasparov">
+          <Header title="Vladimir Kramnik vs. Garry Kasparov" />
+          <div className="container">
+            <div className="leftSide">
+              <div className="blankSpace"></div>
+              <BlackPlayerImg alt="Kasparov2" blackPlayer="/playerImgs/kasparov2.jpg" />
+              <WhitePlayerImg alt="Kramnik" whitePlayer="/playerImgs/kramnik.jpg" />
+              <Description description="Game played at the intel world chess express challenge(1994) in Munich, Germany. This game is unusual and extraordinary because
+                  Kasparov sacrifices his queen on move 12! He positionally dominates the game without his queen and wins the game."
+                />
+            </div>
+            <div className="middleBoard">
+              <ChessBoardMovesAlready passToEngine={passToEngine} setMove={setMove} movesList={kasparov_kramnik} gameover="Kramnik resigned in this position"/>
+            </div>
+            <div className="rightSide">
+              <MovesDisplay userMoveEngine={userMoveEngine} move={moveCount} movesList={kasparov_kramnik}/>
             </div>
           </div>
         </Route>
