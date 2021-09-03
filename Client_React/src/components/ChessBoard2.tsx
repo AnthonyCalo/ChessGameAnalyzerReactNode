@@ -239,6 +239,11 @@ function ChessBoardMovesAlready(props: any){
             newKingSquare="c8";
             oldRookSquare="a8";
             newRookSquare="d8";
+        }else if(newSquare==="WQ"){
+            oldKingSquare="e1";
+            newKingSquare="c1";
+            oldRookSquare="a1";
+            newRookSquare="d1";
         }
         setPieces((prev)=>{
             const pieces=prev.map((selectPiece)=>{

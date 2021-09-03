@@ -2,7 +2,7 @@ import React, {useState} from "react"
 import ChessBoardMovesAlready from "./components/ChessBoard2";
 import Header from "./components/Header";
 import Sidebar from "./components/SideBar";
-import {movesList, theApplause, kasparovDB, carlsen_giri, carlsen_ivanchuk, nakamura_bareev, morphy_anderson, kasparov_kramnik} from "./game/moves";
+import {movesList, dubov_simon,theApplause, kasparovDB, carlsen_giri, carlsen_ivanchuk, nakamura_bareev, morphy_anderson, kasparov_kramnik} from "./game/moves";
 import Description from "./components/Description";
 import HomePage from './components/HomePage';
 import MovesDisplay from "./components/MovesDisplay";
@@ -180,6 +180,25 @@ function App() {
             </div>
             <div className="rightSide">
               <MovesDisplay userMoveEngine={userMoveEngine} move={moveCount} movesList={kasparov_kramnik}/>
+            </div>
+          </div>
+        </Route>
+        <Route exact path="/dubov_simon">
+          <Header title="Daniil Dubov vs Simon Williams" />
+          <div className="container">
+            <div className="leftSide">
+              <div className="blankSpace"></div>
+              <BlackPlayerImg alt="Dubov" blackPlayer="/playerImgs/dubov.jpg" />
+              <WhitePlayerImg alt="Williams" whitePlayer="/playerImgs/williams.jpg" />
+              <Description description="Fun game played at MrDodgy Invitational 2.0, rd 2, May-12 (2021). I chose this game because of the incredible ending.
+              Dubov was able to see a forced mate in 9. Beginning on move 23(bishop to a2)"
+                />
+            </div>
+            <div className="middleBoard">
+              <ChessBoardMovesAlready passToEngine={passToEngine} setMove={setMove} movesList={dubov_simon} gameover="Williams resigned in this position"/>
+            </div>
+            <div className="rightSide">
+              <MovesDisplay userMoveEngine={userMoveEngine} move={moveCount} movesList={dubov_simon}/>
             </div>
           </div>
         </Route>

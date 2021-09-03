@@ -1,5 +1,6 @@
 import React from "react";
 import "./sidebar.css";
+import {Link} from "react-router-dom";
 
 
 
@@ -29,6 +30,12 @@ export default class Sidebar extends React.Component {
     
     render(){
         return(
+        <>
+        <div className="homebutton">
+            <Link to="/">
+                <img className="homeImg" src="/wallpaper/home_icon.png"></img>
+            </Link>
+        </div>
         <nav className="navbar-min" id="sidebar">
             <button className="nav-toggle" id="toggler">
                 <i className='fa fa-bars'> Games</i>
@@ -43,10 +50,12 @@ export default class Sidebar extends React.Component {
             <a href="/nakamura_bareev"><li>Evgeny Bareev vs Hikaru Nakamura</li></a>
             <a href="/anderssen_morphy"><li>Adolf Anderssen vs Paul Morphy</li></a>
             <a href="/kramnik_kasparov"><li>Vladimir Kramnik vs Garry Kasparov</li></a>
+            <a href="/dubov_simon"><li>Simon Williams vs Daniil Dubov</li></a>
             </ul>
             </div>
 
         </nav>
+        </>
         )
     }
 }

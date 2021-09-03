@@ -68,8 +68,17 @@ const kasparov_kramnik = [["d2", "d4"], ["g8", "f6"],["c2", "c4"],["g7", "g6"],[
 ,["f1", "h1"],["h4", "f4"],["h1", "f1"],["e8", "f8"],["f2", "f3"],["f4", "h4"],["f3", "e4"],["d3", "f4"],["g2", "g1"]
 ,["c5", "d3"],["e4", "e5"],["d3", "e5"],["b1", "c1"],["h4", "h3"],["d2", "f3"],["g5", "g4"],["f3", "e5"],["h3", "e3"]
 ,["e5", "d7"],["f4", "h3"],["g1", "g2"],["f8", "f1"],["g2", "f1"],["g4", "g3"],["f1", "g2"],["h3", "f4"]
-,["gameOver", "gaemOver"]]
+,["gameOver", "gameOver"]]
 
-export {movesList, theApplause, kasparovDB, carlsen_giri, carlsen_ivanchuk, nakamura_bareev, morphy_anderson, kasparov_kramnik};
+var dubov_simon = [["e2","e4"],["c7", "c5"],["g1", "f3"],["d7", "d6"],["d2", "d4"],["c5", "d4"],["f3", "d4"]
+,["g8", "f6"],["b1", "c3"],["b8", "c6"],["c1", "g5"],["e7", "e6"],["d1", "d3"],["c8", "d7"],["castle", "WQ"]
+,["a7", "a6"],["f2", "f4"],["f8", "e7"],["d4", "c6"],["d7", "c6"],["c1", "b1"],["castle", "BK"],
+["h2", "h4"],["b7", "b5"],["g5", "f6"],["e7", "f6"],["c3", "e2"],["d8", "a5"],["e2", "d4"],["a8", "c8"],
+["g2", "g4"],["f6", "d4"],["d3", "d4"],["e6", "e5"],["d4", "e3"],["e5", "f4"],["e3", "f4"],["c6", "d7"],
+["h4", "h5"],["d7", "e6"],["a2", "a3"],["b5", "b4"],["h5", "h6"],["b4", "a3"],["h6", "g7"],["e6", "a2"],
+["b1", "a2"],["a3", "b2"],["a2", "b2"],["a5", "c3"],["b2", "a2"],["c3", "c2"],["a2", "a1"],["c2", "d1"],["gameOver", "gameOver"] ]
+
+export {movesList, theApplause, kasparovDB, carlsen_giri, carlsen_ivanchuk, nakamura_bareev, 
+        morphy_anderson, kasparov_kramnik, dubov_simon};
 
 //var kasparovDB: move[] = [[]]
