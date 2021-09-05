@@ -53,9 +53,9 @@ const MovesDisplay = (props: any)=>{
             <div className="buttons">
                 <EngineBut userMoveEngine={props.userMoveEngine} game={props.movesList} moveNum={props.move} />
                 <div className="btns">
-                    <button className="back_btn MD_btn" onClick={()=>backMove()}>Move back</button>
+                    <button className="back_btn MD_btn" onClick={()=>backMove()}>Move back <br/>&#40; &#8592; &#41;</button>
                     <button className="reset__button MD_btn" onClick={()=>window.location.reload()}>ResetBoard</button>
-                    <button className="next_btn MD_btn" onClick={()=>nextMove()}>Next move</button>
+                    <button className="next_btn MD_btn" onClick={()=>nextMove()}>Next move<br/>&#40; &#8594; &#41;</button>
                 </div>
             </div>
             

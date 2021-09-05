@@ -11,7 +11,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import { WhitePlayerImg, BlackPlayerImg } from "./components/WhitePlayerImg";
+import { WhitePlayerImg, BlackPlayerImg } from "./components/PlayerImg";
 
 function App() {
 
@@ -38,12 +38,12 @@ function App() {
           <HomePage />
         </Route>  
         <Route exact path="/fischer_reuben">
-          <Header title="Robert James Fischer vs Reuben Fine" />
+          <Header title="Reuben Fine vs Robert James Fischer" />
           <div className="container">
             <div className="leftSide">
               <div className="blankSpace"></div>
-              <BlackPlayerImg alt="Fine" blackPlayer="/playerImgs/ReubenFine.jpg" />
-              <WhitePlayerImg alt="Fischer" whitePlayer="/playerImgs/fischer.jpg" />
+              <BlackPlayerImg alt="Reuben Fine" blackPlayer="/playerImgs/ReubenFine.jpg" />
+              <WhitePlayerImg alt="Bobbey Fischer" whitePlayer="/playerImgs/fischer.jpg" />
               <Description description="Bobby Fischer played the evans gambit and destroyed grandmaster Rueben Fine in 17 moves"/>
             </div>
             <div className="middleBoard">
@@ -56,12 +56,12 @@ function App() {
          
         </Route>
         <Route exact path="/fischer_spassky">
-          <Header title="Robert James Fischer vs Boris Spassky" />
+          <Header title="Boris Spassky vs Robert James Fischer" />
           <div className="container">
             <div className="leftSide">
             <div className="blankSpace"></div>
-              <BlackPlayerImg alt="Spassky" blackPlayer="/playerImgs/Spassky.png" />
-              <WhitePlayerImg alt="Fischer" whitePlayer="/playerImgs/fischer2.jpg" />
+              <BlackPlayerImg alt="Boris Spassky" blackPlayer="/playerImgs/Spassky.png" />
+              <WhitePlayerImg alt="Bobby Fischer" whitePlayer="/playerImgs/fischer2.jpg" />
               <Description description="This is game 6 of the 1972 world championships. One of the most famous games ever played. Also known as 'The Applause' game. Boris Spassky stoop up and clapped at the
                 beauty of Fischers performance when resigning.
                 It is an extra level of intensity because match occured  during the height of the cold war between USSR and The United States.  "/>
@@ -79,8 +79,8 @@ function App() {
           <div className="container">
             <div className="leftSide">
             <div className="blankSpace"></div>
-              <BlackPlayerImg alt="Kasparov" blackPlayer="/playerImgs/kasparov.jpg" />
-              <WhitePlayerImg  alt="deepBlue" whitePlayer="/playerImgs/deepblue.jpg"/>
+              <BlackPlayerImg alt="Garry Kasparov" blackPlayer="/playerImgs/kasparov.jpg" />
+              <WhitePlayerImg  alt="IBM DeepBlue" whitePlayer="/playerImgs/deepblue.jpg"/>
               <Description description="This game took place in 1997. It is signifcant moment in chess and technology. 
                 This is the first time a computer ever beat the human world champion. "/>
             </div>
@@ -97,8 +97,8 @@ function App() {
           <div className="container">
             <div className="leftSide">
               <div className="blankSpace"></div>
-              <BlackPlayerImg alt="Giri" blackPlayer="/playerImgs/giri.jpg" />
-              <WhitePlayerImg alt="Carlsen" whitePlayer="/playerImgs/carlsen.jpg" />
+              <BlackPlayerImg alt="Anish Giri" blackPlayer="/playerImgs/giri.jpg" />
+              <WhitePlayerImg alt="Magnus Carlsen" whitePlayer="/playerImgs/carlsen.jpg" />
               <Description description="World champion Magnus Carlsen plays against world #4 at the 2019 Gashimov Memorial. Considered by many game of the year."/>
             </div>
             <div className="middleBoard">
@@ -114,8 +114,8 @@ function App() {
           <div className="container">
             <div className="leftSide">
               <div className="blankSpace"></div>
-              <BlackPlayerImg alt="Ivanchuk" blackPlayer="/playerImgs/ivanchuk.jpg" />
-              <WhitePlayerImg alt="Carlsen" whitePlayer="/playerImgs/carlsen2.jpg" />
+              <BlackPlayerImg alt="Vasilly Ivanchuk" blackPlayer="/playerImgs/ivanchuk.jpg" />
+              <WhitePlayerImg alt="Magnus Carlsen" whitePlayer="/playerImgs/carlsen2.jpg" />
               <Description description="World champion Magnus Carlsen loses a game to Vassily Ivanchuk. Ivanchuk was awarded the title of Grandmaster by FIDE in 1988. A leading player since 1988, Ivanchuk has been ranked at No. 2 on the FIDE world rankings three times.
               He has beaten several world champions including Kasparov, Karpov and Carlsen."/>
             </div>
@@ -132,8 +132,8 @@ function App() {
           <div className="container">
             <div className="leftSide">
               <div className="blankSpace"></div>
-              <BlackPlayerImg  alt="Nakamura" blackPlayer="/playerImgs/hikaru.jpg"/>
-              <WhitePlayerImg alt="Bareev" whitePlayer="/playerImgs/bareev.jpg" />
+              <BlackPlayerImg  alt="Hikaru Nakamura" blackPlayer="/playerImgs/hikaru.jpg"/>
+              <WhitePlayerImg alt="Evgeny Bareev" whitePlayer="/playerImgs/bareev.jpg" />
               <Description description="Hikaru Nakamura defeats grandmaster  Evgeny Bareev in 11 moves! Can you find Bareevs Blunder?"/>
             </div>
             <div className="middleBoard">
@@ -149,8 +149,8 @@ function App() {
           <div className="container">
             <div className="leftSide">
               <div className="blankSpace"></div>
-              <BlackPlayerImg alt="Anderssen" blackPlayer="/playerImgs/anderssen.jpg" />
-              <WhitePlayerImg alt="Morphy" whitePlayer="/playerImgs/morphy.jpg" />
+              <BlackPlayerImg alt="Adolf Anderssen" blackPlayer="/playerImgs/anderssen.jpg" />
+              <WhitePlayerImg alt="Paul Morphy" whitePlayer="/playerImgs/morphy.jpg" />
               <Description description="Beatiful game played in 1858. After winning the 1st American Chess congress(1857), 
                 Morphy went to europe to challenge the best grandmasters in the continent.
                 He defeats German grandmaster Anderssen. "
@@ -165,14 +165,14 @@ function App() {
           </div>
         </Route>
         <Route exact path="/kramnik_kasparov">
-          <Header title="Vladimir Kramnik vs. Garry Kasparov" />
+          <Header title="Garry Kasparov vs. Vladimir Kramnik" />
           <div className="container">
             <div className="leftSide">
               <div className="blankSpace"></div>
-              <BlackPlayerImg alt="Kasparov2" blackPlayer="/playerImgs/kasparov2.jpg" />
-              <WhitePlayerImg alt="Kramnik" whitePlayer="/playerImgs/kramnik.jpg" />
+              <BlackPlayerImg alt="Garry Kasparov" blackPlayer="/playerImgs/kasparov2.jpg" />
+              <WhitePlayerImg alt="Vladimir Kramnik" whitePlayer="/playerImgs/kramnik.jpg" />
               <Description description="Game played at the intel world chess express challenge(1994) in Munich, Germany. This game is unusual and extraordinary because
-                  Kasparov sacrifices his queen on move 12! He positionally dominates the game without his queen and wins the game."
+                  Kasparov sacrifices his queen on move 12! Then manages to positionally dominate the rest of the game."
                 />
             </div>
             <div className="middleBoard">
@@ -188,8 +188,8 @@ function App() {
           <div className="container">
             <div className="leftSide">
               <div className="blankSpace"></div>
-              <BlackPlayerImg alt="Dubov" blackPlayer="/playerImgs/dubov.jpg" />
-              <WhitePlayerImg alt="Williams" whitePlayer="/playerImgs/williams.jpg" />
+              <BlackPlayerImg alt="Daniil Dubov" blackPlayer="/playerImgs/dubov.jpg" />
+              <WhitePlayerImg alt="Simon Williams" whitePlayer="/playerImgs/williams.jpg" />
               <Description description="Fun game played at MrDodgy Invitational 2.0, rd 2, May-12 (2021). I chose this game because of the incredible ending.
               Dubov was able to see a forced mate in 9. Beginning on move 23(bishop to a2)"
                 />

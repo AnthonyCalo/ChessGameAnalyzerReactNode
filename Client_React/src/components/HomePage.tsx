@@ -1,6 +1,6 @@
 import React from 'react';
 import "./HomePage.css";
-import { WhitePlayerImg, BlackPlayerImg } from './WhitePlayerImg';
+import { WhitePlayerImg, BlackPlayerImg } from './PlayerImg';
 
 
 class HomePage extends React.Component {
