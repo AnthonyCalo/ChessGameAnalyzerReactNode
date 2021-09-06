@@ -15,7 +15,6 @@ const engine = new Engine();
 
 
 app.get('/', function(req, res){
-    console.log(engine.printBoard());
     engine.loadMoves("d2d4 b8c6");
     
     var best = engine.search(8);
@@ -33,7 +32,6 @@ app.post("/", async function(req, res){
     try{
         moves = req.body.moves;
         BM = await bestMove(moves);
-        console.log('BM: ' + BM);
         const bestMovie = {
             "bm": BM
         };
