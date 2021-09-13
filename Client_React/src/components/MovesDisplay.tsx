@@ -14,6 +14,8 @@ const MovesDisplay = (props: any)=>{
         backMve?.click();
     }
     const renderMoves=()=>{
+        //returns a white move and black move
+        //if index =0 or index is even then that move is white and the next is blacks
         const moves= props.movesList.map((move: any, index: number)=>{
             if((index===0 || index%2===0) &&  move[0]!=="gameOver"){  
                 return(
@@ -22,8 +24,6 @@ const MovesDisplay = (props: any)=>{
                     <div className= {`black_move ${index+1===props.move-1 ? "current_move": ""}`}>{props.movesList[index+1][1]}</div>  
                 </>)
             }            
-                
-            
             return null;
             
         });
@@ -32,11 +32,11 @@ const MovesDisplay = (props: any)=>{
         let displayMove = moves.map((move: any, index: number)=>{
             if(move){
                 Counter+=1;
-            return(
-                    <div className="move">
-                        <div className="number">{Counter}. </div>
-                        {move}
-                    </div>)
+                return(
+                        <div className="move">
+                            <div className="number">{Counter}. </div>
+                            {move}
+                        </div>)
                 }
             }
             

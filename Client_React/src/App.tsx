@@ -1,18 +1,13 @@
-import React, {useState} from "react"
-import ChessBoardMovesAlready from "./components/ChessBoard2";
 import Header from "./components/Header";
 import Sidebar from "./components/SideBar";
 import {movesList, dubov_simon,theApplause, kasparovDB, carlsen_giri, carlsen_ivanchuk, nakamura_bareev, morphy_anderson, kasparov_kramnik} from "./game/moves";
-import Description from "./components/Description";
 import HomePage from './components/HomePage';
-import MovesDisplay from "./components/MovesDisplay";
 import Game from "./components/GamePage";
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
-import { WhitePlayerImg, BlackPlayerImg } from "./components/PlayerImg";
 
 function App() {
 
@@ -32,7 +27,7 @@ function App() {
               blackName="Reueben Fine"
               blackImg="/playerImgs/ReubenFine.jpg"
               whiteImg="/playerImgs/fischer.jpg"
-              desc="Bobby Fischer played the evans gambit and destroyed grandmaster Rueben Fine in 17 moves"
+              description="Bobby Fischer played the evans gambit and destroyed grandmaster Rueben Fine in 17 moves"
               movesList={movesList}
               gameOver="Reuben Fine resigned in this position"
             /> 

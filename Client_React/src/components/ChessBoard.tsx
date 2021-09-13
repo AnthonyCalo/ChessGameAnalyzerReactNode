@@ -103,7 +103,7 @@ function ChessBoardMovesAlready(props: any){
             let currentRank = verticalAxis[Math.floor((event.clientY- chessboard?.offsetTop) / 94)];
             let currentFile = horizontalAxis[Math.floor((event.clientX - chessboard?.offsetLeft) / 94)];
             let currentPiece = pieces.find(p => p.file===currentFile && p.rank===currentRank);
-            if(element.classList.contains("chess-piece") && currentPiece?.color===turn){
+            if(element.classList.contains("chess-piece")){
                 element.style.position="absolute";
                 activePiece= element;
             }
@@ -140,11 +140,12 @@ function ChessBoardMovesAlready(props: any){
     }
     function placePiece(event: any){
             const chessboard=boardRef.current;
+            
             if(playerMoves===false){
                 setPM(true);
                 //pushing each piece into a new piece Array
                 //it stores the games position before the player moves the pieces. Required to put pieces back
-                //newArray=pieces won't work beauase it will keep the piece state when person moves the pieces
+                //newArray=pieces won't work beauase it will not be a pass by reference not pass by value
                 pieces.forEach((piece)=>{
                     const oldPiece: Piece = {
                         image: piece.image,
@@ -158,6 +159,7 @@ function ChessBoardMovesAlready(props: any){
             }
             var validMove = false; //needed to check if a move is okay
 
+
             
             if(chessboard){
                 var newRank = verticalAxis[Math.floor((event.clientY- chessboard?.offsetTop) / 94)];  //this gets the new square based on where I release the mouse
@@ -168,15 +170,36 @@ function ChessBoardMovesAlready(props: any){
 
                 const parent=activePiece?.parentElement//needed to get original square. Need square to find the original piece on square
                 var currentPiece=pieces.find(p=> (p.file===parent?.id[0] && p.rank===parent.id[1]));
+                var rightTurn = currentPiece?.color===turn; //checks if players turn
+                console.log(rightTurn);
+
                 
                 var attackedPiece = pieces.find(p => p.file===newFile && p.rank===newRank);
-
                 if(currentPiece){
                     validMove = referee.isValidMove(parent?.id, newSquare, currentPiece?.type, currentPiece?.color, pieces);
                     // console.log(validMove);
                 }
+                if(currentPiece?.type===5 && validMove && rightTurn){
+                    if(newSquare==="g1" && validMove ){
+                        castle("WK");
+                        setTurn(turn===0?1:0);
+
+                    }else if(newSquare==="c1" && validMove){
+                        castle("WQ");
+                        setTurn(turn===0?1:0);
+
+                    }else if(newSquare==="g8" && validMove){
+                        castle("BK");
+                        setTurn(turn===0?1:0);
+
+                    }else if(newSquare==="c8" && validMove){
+                        castle("BQ");
+                        setTurn(turn===0?1:0);
+
+                    }
+                }
                 //console.log(newFile+newRank);
-                if(attackedPiece && validMove){
+                if(attackedPiece && validMove && rightTurn){
                     //console.log("here attacking")
                     const attackSquare = attackedPiece?.file + attackedPiece.rank;
                     setPieces((value)=>{        
@@ -196,7 +219,7 @@ function ChessBoardMovesAlready(props: any){
                 setPieces((prev)=>{
                     const pieces=prev.map((selectPiece)=>{
                         const parent=activePiece?.parentElement
-                        if(validMove && parent&& selectPiece.file===parent.id[0] && selectPiece.rank===parent.id[1]){
+                        if(validMove && rightTurn && parent&& selectPiece.file===parent.id[0] && selectPiece.rank===parent.id[1]){
                             var moveEngine = parent.id + newSquare;
                             setUME([...userMovesEngine, moveEngine]);
                             //if the moves valid take the piece on current parent square

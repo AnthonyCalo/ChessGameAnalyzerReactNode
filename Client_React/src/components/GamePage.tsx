@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Header from "./Header";
-import ChessBoardMovesAlready from './ChessBoard2';
+import ChessBoardMovesAlready from './ChessBoard';
 import { WhitePlayerImg, BlackPlayerImg } from './PlayerImg';
 import Description from './Description';
 import MovesDisplay from './MovesDisplay';

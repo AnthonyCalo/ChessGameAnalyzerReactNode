@@ -1,4 +1,4 @@
-import  {pieceType, Color}  from "../components/ChessBoard2";
+import  {pieceType, Color}  from "../components/ChessBoard";
 
 const boardFiles = ["a","b","c","d","e","f","g","h"];
 const boardRanks = ["1","2","3","4","5","6","7","8"];
@@ -218,7 +218,49 @@ class gameRef {
             return movesValid;
         }
         function kingValidity(){
-            if((Math.abs(oldX-newX)===1&& oldY===newY) || (Math.abs(oldY-newY)===1&& oldX===newX) || (Math.abs(oldX-newX)===1&&Math.abs(oldY-newY)===1)){
+            //castling 
+            if(color===0 && prevSquare==="e1" && newSquare==="g1"){
+                if(squareHasPiece('f', '1', currentBoard) || squareHasPiece('g','1',currentBoard)){
+                    return false;
+                }else{
+                    if(squareHasPiece('h',"1", currentBoard)){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                }
+            }else if(color===0 && prevSquare==="e1" && newSquare==="c1"){
+                if(squareHasPiece('d', '1', currentBoard) || squareHasPiece('c','1',currentBoard) || squareHasPiece('b','1',currentBoard)){
+                    return false;
+                }else{
+                    if(squareHasPiece('a',"1", currentBoard)){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                }
+            }else if(color===1 && prevSquare==="e8" && newSquare==="g8"){
+                if(squareHasPiece('f', '8', currentBoard) || squareHasPiece('g','8',currentBoard)){
+                    return false;
+                }else{
+                    if(squareHasPiece('h',"8", currentBoard)){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                }
+            }else if(color===1 && prevSquare==="e8" && newSquare==="c8"){
+                if(squareHasPiece('d', '8', currentBoard) || squareHasPiece('c','8',currentBoard) || squareHasPiece('b','8',currentBoard)){
+                    return false;
+                }else{
+                    if(squareHasPiece('a',"8", currentBoard)){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                }
+            //non castling just moving one square away
+            }else if((Math.abs(oldX-newX)===1&& oldY===newY) || (Math.abs(oldY-newY)===1&& oldX===newX) || (Math.abs(oldX-newX)===1&&Math.abs(oldY-newY)===1)){
                 return true;
             }else{
                 return false;

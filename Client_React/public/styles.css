@@ -1,9 +1,14 @@
+html{
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+}
 a{
     text-decoration: none;
 }
 .accordion{
     margin-right: 15%;
     width: 250px;
+    font-family: 'Glory', sans-serif;
+    font-weight: bold;
 }
 .accordion_title{
     text-align: center;

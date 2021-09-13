@@ -33,7 +33,7 @@ export default class Sidebar extends React.Component {
         <>
         <div className="homebutton">
             <Link to="/">
-                <img className="homeImg" src="/wallpaper/home_icon.png"></img>
+                <img className="homeImg" alt="home-button" src="/wallpaper/home_icon.png"></img>
             </Link>
         </div>
         <nav className="navbar-min" id="sidebar">
