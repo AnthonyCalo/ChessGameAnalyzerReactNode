@@ -78,7 +78,11 @@ var dubov_simon = [["e2","e4"],["c7", "c5"],["g1", "f3"],["d7", "d6"],["d2", "d4
 ["h4", "h5"],["d7", "e6"],["a2", "a3"],["b5", "b4"],["h5", "h6"],["b4", "a3"],["h6", "g7"],["e6", "a2"],
 ["b1", "a2"],["a3", "b2"],["a2", "b2"],["a5", "c3"],["b2", "a2"],["c3", "c2"],["a2", "a1"],["c2", "d1"],["gameOver", "gameOver"] ]
 
+var carlsen_duda=[["d2","d4"],["g8","f6"],["c2","c4"],["e7","e6"],["b1","c3"],["d7","d5"],["c4","d5"],["f6","d5"],
+["g1","f3"],["c7","c5"],["e2","e3"],["c5","d4"],["e3","d4"],["d5","c3"],["b2","c3"],["d8","c7"],["a1","b1"],
+["b8","d7"],["f1","d3"],["c7","c3"],["e1","f1"],["f8","e7"],["h2","h4"],["castle","BK"],["h1","h3"],["d7","f6"],
+["f3","e5"],["c3","a5"],["h3","g3"],["g8","h8"],["c1","g5"],["h7","h6"],["g5","h6"],["g7","h6"],["d1","f3"],["gameOver", "gameOver"]]
 export {movesList, theApplause, kasparovDB, carlsen_giri, carlsen_ivanchuk, nakamura_bareev, 
-        morphy_anderson, kasparov_kramnik, dubov_simon};
+        morphy_anderson, kasparov_kramnik, dubov_simon, carlsen_duda};
 
 //var kasparovDB: move[] = [[]]

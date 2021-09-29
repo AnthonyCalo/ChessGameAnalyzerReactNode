@@ -9,3 +9,13 @@
 .chess-piece:hover{
     cursor: grab;
 }
+.bottomLabel{
+    position:relative;
+    top:74.5px;
+    left:84px;
+}
+.bottomLabelTwo{
+    position:relative;
+    top:76px;
+    left:72px;
+}

@@ -2,6 +2,7 @@ const express = require('express');
 const { Engine } =require("./wukong/wukong");
 const cors = require('cors');
 const bodyParser = require("body-parser");
+require('dotenv').config();
 
 const app = express();
 
@@ -44,6 +45,6 @@ app.post("/", async function(req, res){
 })
 
 
-app.listen(3001, function(){
+app.listen(process.env.PORT || 3001, function(){
     console.log("Server listening on port 3001")
 })

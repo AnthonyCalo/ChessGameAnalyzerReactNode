@@ -13,6 +13,7 @@ class HomePage extends React.Component {
     render(){
         if(this.state.loaded){
             return(
+            <>
             <div className="container_homepage">
                     <a href="fischer_reuben"><div className='gameListDiv'>
                         <WhitePlayerImg whitePlayer="/playerImgs/fischer.jpg" whiteClass='white-home'/>
@@ -59,8 +60,19 @@ class HomePage extends React.Component {
                         <div className="LINKGAME">Simon Williams vs Daniil Dubov</div>
                         <BlackPlayerImg blackPlayer="/playerImgs/dubov.jpg" blackClass="black-home"/>
                     </div></ a>
+                    <a href="carlsen_duda"><div className='gameListDiv'>
+                        <WhitePlayerImg whitePlayer="/playerImgs/carlsen3.jpg" whiteClass='white-home'/>
+                        <div className="LINKGAME">Magnus Carlsen vs Jan Krzyztof Duda</div>
+                        <BlackPlayerImg blackPlayer="/playerImgs/duda.jpg" blackClass="black-home"/>
+                    </div></ a>
+                    
                     
             </div>
+            <div className="gitLogoDiv">
+            <a href="https://github.com/AnthonyCalo/ChessGameAnalyzerReactNode" target="_blank" rel="noreferrer"><img src="/wallpaper/git_logo2.png" className="gitLogo" alt="gitLogo"></img></a>
+            <label className="gitLabel"><a href="https://github.com/AnthonyCalo/ChessGameAnalyzerReactNode" target="_blank" rel="noreferrer">Source Code</a></label>
+            </div>
+            </>
             )
         }else{
             return(

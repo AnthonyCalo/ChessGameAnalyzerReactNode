@@ -171,13 +171,11 @@ function ChessBoardMovesAlready(props: any){
                 const parent=activePiece?.parentElement//needed to get original square. Need square to find the original piece on square
                 var currentPiece=pieces.find(p=> (p.file===parent?.id[0] && p.rank===parent.id[1]));
                 var rightTurn = currentPiece?.color===turn; //checks if players turn
-                console.log(rightTurn);
 
                 
                 var attackedPiece = pieces.find(p => p.file===newFile && p.rank===newRank);
                 if(currentPiece){
                     validMove = referee.isValidMove(parent?.id, newSquare, currentPiece?.type, currentPiece?.color, pieces);
-                    // console.log(validMove);
                 }
                 if(currentPiece?.type===5 && validMove && rightTurn){
                     if(newSquare==="g1" && validMove ){
@@ -198,7 +196,6 @@ function ChessBoardMovesAlready(props: any){
 
                     }
                 }
-                //console.log(newFile+newRank);
                 if(attackedPiece && validMove && rightTurn){
                     //console.log("here attacking")
                     const attackSquare = attackedPiece?.file + attackedPiece.rank;
@@ -303,6 +300,11 @@ function ChessBoardMovesAlready(props: any){
             newKingSquare="e8";
             oldRookSquare="d8";
             newRookSquare="a8";
+        }else if(newSquare==="WQ"){
+            oldKingSquare="c1";
+            newKingSquare="e1";
+            oldRookSquare="d1";
+            newRookSquare="a1";
         }
         setPieces((prev)=>{
             const pieces=prev.map((selectPiece)=>{
@@ -330,9 +332,9 @@ function ChessBoardMovesAlready(props: any){
     //     return true;
     // }
     function movePieceGame(move: any){
+        //set pieces to old game position from saved oldGamePosition variable
         if(playerMoves){
             setPieces(oldGamePosition);
-            console.log("setting pieces to old position");
             setPM(false);
             oldGamePosition=[];
             setUME([]);
@@ -442,11 +444,6 @@ function ChessBoardMovesAlready(props: any){
                 }  
             }      
     }
-//PROBLEM NEED TO KNOW: AT THE END OF THE NEXT MOVE IT SAYS NEXT MOVE
-
-        
-        
-
         }
     
     let board: any=[];
@@ -463,10 +460,11 @@ function ChessBoardMovesAlready(props: any){
 
             let image="";
             pieces.forEach(function(piece){
-                //if a pieces starting position is equal to a square pass that piece into square creation
+                //if a pieces position is equal to a square pass that piece into square creation
                 //image is either "" blank or has the URL of a piece.image
                 if(piece.file===position[0] && piece.rank===position[1]){
                     image=piece.image;
+                    //return;
                 }
             })
             board.push(<Square key={position} number={counter} image={image} sText={position} />);
@@ -510,5 +508,3 @@ export default ChessBoardMovesAlready;
 export {pieceType, Color};
 
 
-//onClick={()=>{movePieceGame(movesList[moveCount])}}
-//onClick={()=>{setbackMove(); movePieceBack()}}

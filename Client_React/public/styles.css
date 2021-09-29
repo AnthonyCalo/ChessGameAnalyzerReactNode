@@ -51,10 +51,11 @@ body{
 }
 
 .black-square{
-    
-/* background-image: url("/wallpaper/darkMarble3.jpg"); */
-background-color: #3d2827;
-background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
+    background-color: #3d2827;
+    background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
+}
+.black-square div{
+    color: white;
 }
 .blackButton{
     background-color: black;
@@ -90,7 +91,7 @@ background-image: url("https://www.transparenttextures.com/patterns/brushed-alum
 .leftSide{
     width: 15%;
     height: 752px;
-    margin-left: 10%;
+    margin-left: 7%;
     display: grid;
     grid-template-rows: 150px 200px 200px;
 }
@@ -144,7 +145,8 @@ background-image: url("https://www.transparenttextures.com/patterns/brushed-alum
 
 @media (max-width:1650px){
     .leftSide{
-        margin-right: 10%;
+        margin-right: 7%;
+        margin-left: 2%;
     }
     .middleBoard{
         width: 700px;
@@ -160,6 +162,10 @@ background-image: url("https://www.transparenttextures.com/patterns/brushed-alum
 }
 @media (max-width:1320px){
     .leftSide{
-        visibility: hidden;
+        display: none;
     }
+    .boardDiv{
+        margin-left: 120px;
+    }
+    
 }

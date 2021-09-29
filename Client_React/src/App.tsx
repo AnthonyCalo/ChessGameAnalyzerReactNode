@@ -1,6 +1,6 @@
 import Header from "./components/Header";
 import Sidebar from "./components/SideBar";
-import {movesList, dubov_simon,theApplause, kasparovDB, carlsen_giri, carlsen_ivanchuk, nakamura_bareev, morphy_anderson, kasparov_kramnik} from "./game/moves";
+import {movesList, carlsen_duda ,dubov_simon,theApplause, kasparovDB, carlsen_giri, carlsen_ivanchuk, nakamura_bareev, morphy_anderson, kasparov_kramnik} from "./game/moves";
 import HomePage from './components/HomePage';
 import Game from "./components/GamePage";
 import {
@@ -88,8 +88,8 @@ function App() {
         <Route exact path="/nakamura_bareev">
           <Game 
             title="Evgeny Bareev vs Hikaru Nakamura"
-            whiteName="Hikaru Nakamura"
-            blackName="Evgenny Bareev"
+            whiteName="Evgenny Bareev"
+            blackName="Hikaru Nakamura"
             blackImg="/playerImgs/hikaru.jpg"
             whiteImg="/playerImgs/bareev.jpg"
             description="Hikaru Nakamura defeats grandmaster  Evgeny Bareev in 11 moves! Can you find Bareevs Blunder?"
@@ -135,6 +135,19 @@ function App() {
             Dubov was able to see a forced mate in 9. Beginning on move 23(bishop to a2)"
           movesList={dubov_simon}
           gameOver="Williams resigned in this position"
+            /> 
+        </Route>
+        <Route exact path="/carlsen_duda">
+        <Game 
+          title="Magnus Carlsen vs. Jan Krzysztof Duda"
+          whiteName="Magnus Carlsen"
+          whiteImg="/playerImgs/carlsen3.jpg"
+          blackName="Jan Krzysztof Duda"
+          blackImg="/playerImgs/duda.jpg"
+          description="This game is from the Meltwater Champions chess tour finals and was played on September 25th, 2021. 
+          It is a fascinating game. Duda took a 'poison' c3 pawn on move 10 which lead to his defeat."
+          movesList={carlsen_duda}
+          gameOver="Duda resigned in this position"
             /> 
         </Route>
       </Switch>

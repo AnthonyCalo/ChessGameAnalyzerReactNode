@@ -14,6 +14,8 @@ const EngineBut = (props)=>{
                 moveListForEngine.push("e8g8");
             }else if (moveList[i][1]==="BQ"){
                 moveListForEngine.push("e8c8");
+            }else if (moveList[i][1]==="WQ"){
+                moveListForEngine.push("e1c1");
             }else{
                 moveListForEngine.push(moveList[i][0] + moveList[i][1]);
             }
@@ -47,7 +49,7 @@ const EngineBut = (props)=>{
     const getBest=(movesListicle: string)=>{
         if(movesListicle){
             var bestMove ="" 
-            fetch("http://localhost:3001/", {
+            fetch("https://calo-chess-backend.herokuapp.com/", {
                     method: "POST",
                     headers: {'Content-Type': 'application/json',
                                 'Accept': 'application/json'},

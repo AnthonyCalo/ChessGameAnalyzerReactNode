@@ -51,6 +51,7 @@ export default class Sidebar extends React.Component {
             <a href="/anderssen_morphy"><li>Adolf Anderssen vs Paul Morphy</li></a>
             <a href="/kramnik_kasparov"><li>Vladimir Kramnik vs Garry Kasparov</li></a>
             <a href="/dubov_simon"><li>Simon Williams vs Daniil Dubov</li></a>
+            <a href="/carlsen_duda"><li>Magnus Carlsen vs Jan Krzysztof Duda</li></a>
             </ul>
             </div>
 
