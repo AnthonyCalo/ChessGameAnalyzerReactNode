@@ -1,6 +1,6 @@
 import Header from "./components/Header";
 import Sidebar from "./components/SideBar";
-import {movesList, carlsen_duda ,dubov_simon,theApplause, kasparovDB, carlsen_giri, carlsen_ivanchuk, nakamura_bareev, morphy_anderson, kasparov_kramnik} from "./game/moves";
+import {movesList, caruana_ponomariov ,spassky_larsen, carlsen_duda ,dubov_simon,theApplause, kasparovDB, carlsen_giri, carlsen_ivanchuk, nakamura_bareev, morphy_anderson, kasparov_kramnik, ivanchuk_kasparov, aronian_dubov} from "./game/moves";
 import HomePage from './components/HomePage';
 import Game from "./components/GamePage";
 import {
@@ -148,6 +148,55 @@ function App() {
           It is a fascinating game. Duda took a 'poison' c3 pawn on move 10 which lead to his defeat."
           movesList={carlsen_duda}
           gameOver="Duda resigned in this position"
+            /> 
+        </Route>
+        <Route exact path="/spassky_larsen">
+        <Game 
+          title="Bent Larsen vs. Borris Spassky"
+          whiteName="Bent Larsen"
+          whiteImg="/playerImgs/larsen.png"
+          blackName="Boris Spassky"
+          blackImg="/playerImgs/spassky2.jpg"
+          description="Powerful attack by Boris Spassky. Marching his pawns up the board relentlessly. This game was played on April 3rd, 1970."
+          movesList={spassky_larsen}
+          gameOver="CheckMate for Spassky"
+            /> 
+        </Route>
+        <Route exact path="/caruana_ponomariov">
+        <Game 
+          title="Fabiano Caruana vs Ruslan Ponomariov"
+          whiteName="Fabiano Caruana"
+          whiteImg="/playerImgs/caruana.jpg"
+          blackName="Ruslan Ponomariov"
+          blackImg="/playerImgs/ruslan.jpg"
+          description="Incredible victory by Caruana. Ending the game in style. Try to find the best move for white at move #39. Played in Dormund Germany, 2014"
+          movesList={caruana_ponomariov}
+          gameOver="CheckMate for Caruana"
+            /> 
+        </Route>
+        <Route exact path="/ivanchuk_kasparov">
+        <Game 
+          title="Garry Kasparov vs Vassily Ivanchuk"
+          whiteName="Garry Kasparov"
+          whiteImg="/playerImgs/kasparov3.jpg"
+          blackName="Vassily Ivanchuk"
+          blackImg="/playerImgs/ivanchuk2.jpg"
+          description="Vassily Ivanchuk took out the world champion while playing the French defense. Game was played in 1991."
+          movesList={ivanchuk_kasparov}
+          gameOver="Kasparov resigned in this position"
+            /> 
+        </Route>
+        <Route exact path="/aronian_dubov">
+        <Game 
+          title="Levon Aronian vs Daniil Dubov"
+          whiteName="Levon Aronian"
+          whiteImg="/playerImgs/aronian.jpg"
+          blackName="Daniil Dubov"
+          blackImg="/playerImgs/dubov2.png"
+          description="This game was played at the 2021 World Blitz Championship. Awesome game. The beginning of the end for Dubov was when on move 24,
+          he played bishop to c6"
+          movesList={aronian_dubov}
+          gameOver="Dubov resigned in this position"
             /> 
         </Route>
       </Switch>

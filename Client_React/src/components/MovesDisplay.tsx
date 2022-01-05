@@ -13,11 +13,31 @@ const MovesDisplay = (props: any)=>{
         var backMve = document.getElementById("backBtn");
         backMve?.click();
     }
+    const reset=()=>{
+        var rsBtn = document.getElementById("boardReset")
+        rsBtn?.click()
+    }
     const renderMoves=()=>{
         //returns a white move and black move
         //if index =0 or index is even then that move is white and the next is blacks
         const moves= props.movesList.map((move: any, index: number)=>{
-            if((index===0 || index%2===0) &&  move[0]!=="gameOver"){  
+            if((index===0 || index%2===0) &&  move[0]!=="gameOver"){
+                //show a hastag next to move if it is checkmate
+                if(props.movesList[index+1][2]==="mate"){
+                    return( 
+                        <>
+                            <div className={`white_move ${index===props.move-1 ? "current_move": ""}`}>{move[1]}</div>
+                            <div className= {`black_move ${index+1===props.move-1 ? "current_move": ""}`}>{props.movesList[index+1][1]}#</div>  
+                        </>
+                    )
+                }else if (props.movesList[index][2]==="mate"){
+                    return( 
+                        <>
+                            <div className={`white_move ${index===props.move-1 ? "current_move": ""}`}>{move[1]}#</div>
+                            <div className= {`black_move ${index+1===props.move-1 ? "current_move": ""}`}>{props.movesList[index+1][1]}</div>  
+                        </>
+                    )
+                }
                 return(
                 <>
                     <div className={`white_move ${index===props.move-1 ? "current_move": ""}`}>{move[1]}</div>
@@ -54,7 +74,7 @@ const MovesDisplay = (props: any)=>{
                 <EngineBut userMoveEngine={props.userMoveEngine} game={props.movesList} moveNum={props.move} />
                 <div className="btns">
                     <button className="back_btn MD_btn" onClick={()=>backMove()}>Move back <br/>&#40; &#8592; &#41;</button>
-                    <button className="reset__button MD_btn" onClick={()=>window.location.reload()}>ResetBoard</button>
+                    <button className="reset__button MD_btn" onClick={()=>reset()}>ResetBoard</button>
                     <button className="next_btn MD_btn" onClick={()=>nextMove()}>Next move<br/>&#40; &#8594; &#41;</button>
                 </div>
             </div>

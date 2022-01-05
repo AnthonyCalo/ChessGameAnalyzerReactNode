@@ -9,7 +9,7 @@
 .navbar-min{
     background-color: #509152;
     background-image: url("https://www.transparenttextures.com/patterns/absurdity.png");
-    position:absolute;
+    position:fixed;
     width: 4rem;
     height: 100%;
     right: 0em;

@@ -65,7 +65,26 @@ class HomePage extends React.Component {
                         <div className="LINKGAME">Magnus Carlsen vs Jan Krzyztof Duda</div>
                         <BlackPlayerImg blackPlayer="/playerImgs/duda.jpg" blackClass="black-home"/>
                     </div></ a>
-                    
+                    <a href="spassky_larsen"><div className='gameListDiv'>
+                        <WhitePlayerImg whitePlayer="/playerImgs/larsen.png" whiteClass='white-home'/>
+                        <div className="LINKGAME">Bent Larsen vs Borris Spassky</div>
+                        <BlackPlayerImg blackPlayer="/playerImgs/spassky2.jpg" blackClass="black-home"/>
+                    </div></ a>
+                    <a href="caruana_ponomariov"><div className='gameListDiv'>
+                        <WhitePlayerImg whitePlayer="/playerImgs/caruana.jpg" whiteClass='white-home'/>
+                        <div className="LINKGAME">Fabiano Caruana vs Ruslan Ponomariov</div>
+                        <BlackPlayerImg blackPlayer="/playerImgs/ruslan.jpg" blackClass="black-home"/>
+                    </div></ a>
+                    <a href="ivanchuk_kasparov"><div className='gameListDiv'>
+                        <WhitePlayerImg whitePlayer="/playerImgs/kasparov3.jpg" whiteClass='white-home'/>
+                        <div className="LINKGAME">Vassily Ivanchuk vs Garry Kasparov</div>
+                        <BlackPlayerImg blackPlayer="/playerImgs/ivanchuk2.jpg" blackClass="black-home"/>
+                    </div></ a>
+                    <a href="aronian_dubov"><div className='gameListDiv'>
+                        <WhitePlayerImg whitePlayer="/playerImgs/aronian.jpg" whiteClass='white-home'/>
+                        <div className="LINKGAME">Levon Aronian vs Daniil Dubov</div>
+                        <BlackPlayerImg blackPlayer="/playerImgs/dubov2.png" blackClass="black-home"/>
+                    </div></ a>
                     
             </div>
             <div className="gitLogoDiv">

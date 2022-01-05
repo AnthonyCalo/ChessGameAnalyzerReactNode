@@ -210,9 +210,7 @@ class gameRef {
         }
         function KnightValidity(){
             let movesValid=true;
-            if(((Math.abs(newX-oldX)===1)&& (Math.abs(newY-oldY)===2)) ||((Math.abs(newX-oldX)===2)&& (Math.abs(newY-oldY)===1)) ){
-                console.log("good move");
-            }else{
+            if((((Math.abs(newX-oldX)===1)&& (Math.abs(newY-oldY)===2)) ||((Math.abs(newX-oldX)===2)&& (Math.abs(newY-oldY)===1)))===false ){
                 movesValid=false;
             }
             return movesValid;

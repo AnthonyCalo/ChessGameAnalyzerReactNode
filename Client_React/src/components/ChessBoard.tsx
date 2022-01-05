@@ -1,6 +1,9 @@
 import React, {useState, useEffect, useRef} from "react";
+import { Modal} from 'react-bootstrap';
+import GameModal from "./Modal";
 import Square from "./square";
 import gameRef from "../game/legalmove";
+import MovingImage from "./MovingImage";
 
 enum pieceType {
     PAWN,
@@ -35,31 +38,37 @@ let moveSound = new Audio('/sound/move_sound.mp3')
 const verticalAxis = ["8","7","6","5","4", "3","2","1"]
 const horizontalAxis = ["a","b","c","d","e","f","g","h"]
 
-const startingPieces: Piece[] = []
-for(var i=0; i<8; i++){
-    startingPieces.push({image: "pieces/Wpawn.png", rank: "2", file: horizontalAxis[i], type: pieceType.PAWN, color: Color.WHITE});
-}
-for(i=0; i<8; i++){
-    startingPieces.push({image: "pieces/Bpawn.png", rank: "7", file: horizontalAxis[i], type: pieceType.PAWN, color: Color.BLACK});
-}
+var startingPieces: Piece[] = []
 
-startingPieces.push({image: "pieces/Wrook.png", rank: "1", file: "a", type: pieceType.ROOK, color: Color.WHITE});
-startingPieces.push({image: "pieces/Wrook.png", rank: "1", file: "h", type: pieceType.ROOK, color: Color.WHITE});
-startingPieces.push({image: "pieces/Brook.png", rank: "8", file: "a", type: pieceType.ROOK, color: Color.BLACK});
-startingPieces.push({image: "pieces/Brook.png", rank: "8", file: "h", type: pieceType.ROOK, color: Color.BLACK});
-startingPieces.push({image: "pieces/Wknight.png", rank: "1", file: "b", type: pieceType.KNIGHT, color: Color.WHITE});
-startingPieces.push({image: "pieces/Wknight.png", rank: "1", file: "g", type: pieceType.KNIGHT, color: Color.WHITE});
-startingPieces.push({image: "pieces/Wbishop.png", rank: "1", file: "c", type: pieceType.BISHOP, color: Color.WHITE});
-startingPieces.push({image: "pieces/Wbishop.png", rank: "1", file: "f", type: pieceType.BISHOP, color: Color.WHITE});
-startingPieces.push({image: "pieces/Bknight.png", rank: "8", file: "b", type: pieceType.KNIGHT, color: Color.BLACK});
-startingPieces.push({image: "pieces/Bknight.png", rank: "8", file: "g", type: pieceType.KNIGHT, color: Color.BLACK});
-startingPieces.push({image: "pieces/Bbishop.png", rank: "8", file: "c", type: pieceType.BISHOP, color: Color.BLACK});
-startingPieces.push({image: "pieces/Bbishop.png", rank: "8", file: "f", type: pieceType.BISHOP, color: Color.BLACK});
-startingPieces.push({image: "pieces/Wqueen.png", rank: '1', file: "d", type: pieceType.QUEEN, color: Color.WHITE});
-startingPieces.push({image: "pieces/Wking.png", rank: '1', file: "e", type: pieceType.KING, color: Color.WHITE});
-startingPieces.push({image: "pieces/Bqueen.png", rank: '8', file: "d", type: pieceType.QUEEN, color: Color.BLACK});
-startingPieces.push({image: "pieces/Bking.png", rank: '8', file: "e", type: pieceType.KING, color: Color.BLACK});
-
+function create_start(){
+    const pieceArray: Piece[]=[]
+    for(var i=0; i<8; i++){
+        pieceArray.push({image: "pieces/Wpawn.png", rank: "2", file: horizontalAxis[i], type: pieceType.PAWN, color: Color.WHITE});
+    }
+    for(i=0; i<8; i++){
+        pieceArray.push({image: "pieces/Bpawn.png", rank: "7", file: horizontalAxis[i], type: pieceType.PAWN, color: Color.BLACK});
+    }
+    
+    pieceArray.push({image: "pieces/Wrook.png", rank: "1", file: "a", type: pieceType.ROOK, color: Color.WHITE});
+    pieceArray.push({image: "pieces/Wrook.png", rank: "1", file: "h", type: pieceType.ROOK, color: Color.WHITE});
+    pieceArray.push({image: "pieces/Brook.png", rank: "8", file: "a", type: pieceType.ROOK, color: Color.BLACK});
+    pieceArray.push({image: "pieces/Brook.png", rank: "8", file: "h", type: pieceType.ROOK, color: Color.BLACK});
+    pieceArray.push({image: "pieces/Wknight.png", rank: "1", file: "b", type: pieceType.KNIGHT, color: Color.WHITE});
+    pieceArray.push({image: "pieces/Wknight.png", rank: "1", file: "g", type: pieceType.KNIGHT, color: Color.WHITE});
+    pieceArray.push({image: "pieces/Wbishop.png", rank: "1", file: "c", type: pieceType.BISHOP, color: Color.WHITE});
+    pieceArray.push({image: "pieces/Wbishop.png", rank: "1", file: "f", type: pieceType.BISHOP, color: Color.WHITE});
+    pieceArray.push({image: "pieces/Bknight.png", rank: "8", file: "b", type: pieceType.KNIGHT, color: Color.BLACK});
+    pieceArray.push({image: "pieces/Bknight.png", rank: "8", file: "g", type: pieceType.KNIGHT, color: Color.BLACK});
+    pieceArray.push({image: "pieces/Bbishop.png", rank: "8", file: "c", type: pieceType.BISHOP, color: Color.BLACK});
+    pieceArray.push({image: "pieces/Bbishop.png", rank: "8", file: "f", type: pieceType.BISHOP, color: Color.BLACK});
+    pieceArray.push({image: "pieces/Wqueen.png", rank: '1', file: "d", type: pieceType.QUEEN, color: Color.WHITE});
+    pieceArray.push({image: "pieces/Wking.png", rank: '1', file: "e", type: pieceType.KING, color: Color.WHITE});
+    pieceArray.push({image: "pieces/Bqueen.png", rank: '8', file: "d", type: pieceType.QUEEN, color: Color.BLACK});
+    pieceArray.push({image: "pieces/Bking.png", rank: '8', file: "e", type: pieceType.KING, color: Color.BLACK});
+    
+    return pieceArray;
+}
+startingPieces= create_start();
 
 var oldGamePosition: Piece[] = [];
 function ChessBoardMovesAlready(props: any){
@@ -70,7 +79,12 @@ function ChessBoardMovesAlready(props: any){
     const [userMovesEngine, setUME] = useState<String[]>([])
     const [moveCount, setMoveCount] = useState(0);
     const [takenPieces, setTaken]=useState<TakenPiece[]>([]);
+    //props for modal
+    const [modalOpen, setModalOpen] =useState(false);
 
+    function closeModal(){
+        setModalOpen(false)
+    }
     const movesList = props.movesList
     //says whether or not user moved a piece
     //important for setting board back to old position
@@ -84,7 +98,6 @@ function ChessBoardMovesAlready(props: any){
     //passuser moves to the engine
     useEffect(()=>{
         props.passToEngine(userMovesEngine);
-        
     }, );
     useEffect(()=>{
         gameBeginAudio.play();
@@ -170,14 +183,14 @@ function ChessBoardMovesAlready(props: any){
 
                 const parent=activePiece?.parentElement//needed to get original square. Need square to find the original piece on square
                 var currentPiece=pieces.find(p=> (p.file===parent?.id[0] && p.rank===parent.id[1]));
-                var rightTurn = currentPiece?.color===turn; //checks if players turn
+                //var rightTurn = currentPiece?.color===turn; //checks if players turn
 
                 
                 var attackedPiece = pieces.find(p => p.file===newFile && p.rank===newRank);
                 if(currentPiece){
                     validMove = referee.isValidMove(parent?.id, newSquare, currentPiece?.type, currentPiece?.color, pieces);
                 }
-                if(currentPiece?.type===5 && validMove && rightTurn){
+                if(currentPiece?.type===5 && validMove){
                     if(newSquare==="g1" && validMove ){
                         castle("WK");
                         setTurn(turn===0?1:0);
@@ -196,7 +209,7 @@ function ChessBoardMovesAlready(props: any){
 
                     }
                 }
-                if(attackedPiece && validMove && rightTurn){
+                if(attackedPiece && validMove){
                     //console.log("here attacking")
                     const attackSquare = attackedPiece?.file + attackedPiece.rank;
                     setPieces((value)=>{        
@@ -216,7 +229,7 @@ function ChessBoardMovesAlready(props: any){
                 setPieces((prev)=>{
                     const pieces=prev.map((selectPiece)=>{
                         const parent=activePiece?.parentElement
-                        if(validMove && rightTurn && parent&& selectPiece.file===parent.id[0] && selectPiece.rank===parent.id[1]){
+                        if(validMove && parent&& selectPiece.file===parent.id[0] && selectPiece.rank===parent.id[1]){
                             var moveEngine = parent.id + newSquare;
                             setUME([...userMovesEngine, moveEngine]);
                             //if the moves valid take the piece on current parent square
@@ -239,6 +252,8 @@ function ChessBoardMovesAlready(props: any){
             
         }
         }
+    //Castle function basically moves two pieces the rook and king
+    //has to be a seperate function than normal one piece move functin
     function castle(newSquare: string){
         let oldKingSquare ="";
         let newKingSquare="";
@@ -323,14 +338,131 @@ function ChessBoardMovesAlready(props: any){
         )
         
     } 
-    // function moveAnimation(oldSquare: string, newSquare: string){
-    //     let os = document.getElementById(oldSquare);
-    //     let ns = document.getElementById(newSquare);
-    //     var oldPiece = os?.getElementsByClassName("chess-piece") as HTMLCollectionOf<HTMLElement>;;
-    //      oldPiece[0].style.position="absolute";
-    //     console.log(oldPiece[0].style.position);
-    //     return true;
-    // }
+
+    //called with movewithAn(imation) function below
+    function createAnPiece(imgUrl, oldTop, oldLeft, newTop, newLeft){
+        const animatedPiece = new MovingImage(imgUrl, oldTop, oldLeft, newTop, newLeft)
+        let lastTime=0
+        let pieceExists=true
+        function update(time){
+            if(lastTime!=null && pieceExists===true){
+                const delta=time-lastTime
+                animatedPiece.update(delta)
+
+            }
+            lastTime=time
+            window.requestAnimationFrame(update)
+
+        }
+        if(pieceExists){
+            window.requestAnimationFrame(update)
+        }
+        setTimeout(()=>{
+            pieceExists=false;
+        }, 300)
+    }
+    function moveBackWithAn(){
+        // if(moveCount<1){
+        //     return
+        // }
+        const move = movesList[moveCount-1]
+        if(!move){
+            return
+        }
+        if(move[0]=="castle"){
+            let m1, m2;
+            if(move[1]==="WK"){
+                m1 = ["e1", "g1"]
+                m2 = ["h1", "f1"]
+            }else if(move[1]=="WQ"){
+                m1 = ["e1", "c1"]
+                m2 = ["a1", "d1"]
+            }else if(move[1]=="BK"){
+                m1 = ["e8", "g8"]
+                m2 = ["h8", "f8"]
+            }else{
+                m1 = ["e8", "c8"]
+                m2 = ["a8", "d8"]
+            }
+            getAnimationInfo(m1, "backward")
+            getAnimationInfo(m2, "backward")
+        }else{
+            getAnimationInfo(move, "backward")
+        }
+        setTimeout(()=>{
+            movePieceBack()
+            
+        }, 300)
+    }
+    function getAnimationInfo(move:any, direction:String="forward"){
+        let beforeSquare: any;
+        let newSquare: any;
+        if( direction==="backward"  && move){
+            const newid= move[0][0] + move[0][1]
+            const id=move[1][0] + move[1][1]
+            beforeSquare = document.getElementById(id)
+            newSquare= document.getElementById(newid)
+        }else if(direction=="forward" && move){
+            const id= move[0][0] + move[0][1]
+            const newid=move[1][0] + move[1][1]
+            beforeSquare = document.getElementById(id)
+            newSquare= document.getElementById(newid)
+        }
+
+        if(beforeSquare && newSquare){
+            //console.log(getComputedStyle(beforeSquare).getPropertyValue("position"));
+            //square location for animation function
+            var rect = beforeSquare.getBoundingClientRect();
+            var newRect= newSquare.getBoundingClientRect();
+            if(!beforeSquare.getElementsByClassName("chess-piece")[0]){
+                return
+            }
+            //gets image url from intial square. Need for createAnPiece function
+            let imgURL=getComputedStyle(beforeSquare.getElementsByClassName("chess-piece")[0])?.getPropertyValue("background-image")
+            //this basically hides the current square so that the piece isn't shown twice during movement
+            let befMove= beforeSquare.getElementsByClassName("chess-piece")[0]
+            befMove.classList.add("hideBg")
+            imgURL = imgURL.replace(/^url\(["']?/, '').replace(/["']?\)$/, '')
+            //console.log(imgURL)
+            createAnPiece(imgURL, rect.y, rect.x, newRect.y, newRect.x);
+
+        }
+    }
+    function moveWithAn(move: any){
+    //move with animation calls the animation of piece
+    //waits for animation time: then call move piece game function where react
+    //will update stae to re-render pieces on correct square
+        if(!move){
+            return
+        }
+        setMove(moveCount+1);            
+        
+        setTimeout(()=>{
+            movePieceGame(move)
+  
+        }, 300)
+        if(move[0]=="castle"){
+            let m1, m2;
+            if(move[1]==="WK"){
+                m1 = ["e1", "g1"]
+                m2 = ["h1", "f1"]
+            }else if(move[1]=="WQ"){
+                m1 = ["e1", "c1"]
+                m2 = ["a1", "d1"]
+            }else if(move[1]=="BK"){
+                m1 = ["e8", "g8"]
+                m2 = ["h8", "f8"]
+            }else{
+                m1 = ["e8", "c8"]
+                m2 = ["a8", "d8"]
+            }
+            getAnimationInfo(m1)
+            getAnimationInfo(m2)
+        }else{
+            getAnimationInfo(move)
+        }
+    }
+
     function movePieceGame(move: any){
         //set pieces to old game position from saved oldGamePosition variable
         if(playerMoves){
@@ -340,13 +472,14 @@ function ChessBoardMovesAlready(props: any){
             setUME([]);
         }
         moveSound.play()
+        //if(movesList[moveCount+1][0]==="gameOver"){
 
         if(move[0]==="gameOver"){
-            window.alert("Game Over, " + props.gameover);
+            //end of game. BeforeEnd shows this is the end game modal
+            setModalOpen(true);
 
         }else if(move[0]==="castle"){
             castle(move[1]);
-            setMove(moveCount+1);
             setTurn(turn===0?1:0);
         }else{
             //regular move not castle or game over
@@ -380,6 +513,11 @@ function ChessBoardMovesAlready(props: any){
                 setPieces((prev)=>{
                     const pieces=prev.map((selectPiece)=>{
                         if(selectPiece.file===move[0][0] && selectPiece.rank===move[0][1]){
+                            if(selectPiece.type==0 && ((move[1][1]=='8' && selectPiece.color==0) || (move[1][1]==='1' && selectPiece.color==1))){
+                                selectPiece.type=4;
+                                selectPiece.image=("pieces/Bqueen.png")
+                            }
+
                             selectPiece.rank=move[1][1];
                             selectPiece.file=move[1][0];
                             setTurn(turn===0?1:0);
@@ -389,16 +527,18 @@ function ChessBoardMovesAlready(props: any){
                     return pieces;
                 }
                 )
-                setMove(moveCount+1);            
             }
         }//else close. else meaning it isn't a castle move
     
     }//movePieceGame close
     //called with backbutton moves back a game move
     function setbackMove(){
+        if(moveCount<1){
+            return
+        }
         setMove(moveCount-1);
-        setTimeout(function(){
-        },200);
+        // setTimeout(function(){
+        // },200);
     }
     function movePieceBack(){
         const move = movesList[moveCount-1];
@@ -414,10 +554,7 @@ function ChessBoardMovesAlready(props: any){
         } 
         //set the move count back to do the opposite move
         //function is almost the same as forward function but new and old squares flipped
-        if(moveCount===0 || moveCount < 0){
-            window.alert("Cant move back from move 0!");
-            setMove(0);
-        }else if(move[0]==="castle"){
+        if(move[0]==="castle"){
             castleBack(move[1]);
             setTurn(turn===0?1:0);
 
@@ -472,6 +609,14 @@ function ChessBoardMovesAlready(props: any){
         }//ends second for loop
     }//ends first for loop
 
+    // this function resets the board to starting position and sets move to 0.
+    //it's called by the movedisplay component. It .clicks a hidden button 
+    const resetBoard=()=>{
+        const starting = create_start()
+        gameBeginAudio.play();
+        setPieces(starting)
+        setMove(0)
+    }
 
 
     //putting pieces in the squares
@@ -483,6 +628,7 @@ function ChessBoardMovesAlready(props: any){
         <div className="boardDiv">
         {/* <MoveButton color={buttonClass()} turn={moveTurn}/> */}
 
+
         <div className="chessBoard"
             onMouseMove={event => movePiece(event)}
             onMouseDown={event => grabPiece(event)}
@@ -491,13 +637,20 @@ function ChessBoardMovesAlready(props: any){
             {board}
         </div>      
         </div>
-
         {/* KChad to use arrow function because onclick won't work with type void */}
         <div className="belowButtons">
-        <button id="backBtn" className="backBtn moveBtn" onClick={()=>{setbackMove(); movePieceBack()}}>Move back</button>
-        <button id="boardReset" className="moveBtn" onClick={()=>window.location.reload()}>Reset Board</button>
-        <button id="nextBtn" className="nextBtn moveBtn" onClick={()=>{movePieceGame(movesList[moveCount])}}>Next Move</button>
+        <button id="backBtn" className="backBtn moveBtn" onClick={()=>{setbackMove(); moveBackWithAn()}}>Move back</button>
+        <button id="boardReset" className="moveBtn" onClick={()=>resetBoard()}>Reset Board</button>
+        <button id="nextBtn" className="nextBtn moveBtn" onClick={()=>{moveWithAn(movesList[moveCount])}}>Next Move</button>
         </div>
+        <Modal 
+            show={modalOpen}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+        >
+            <GameModal closeModal={setModalOpen} text={props.gameover}/>
+        </Modal>
         </>
         )
 
